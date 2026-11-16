@@ -18,3 +18,13 @@ html,body{max-width:100%;overflow-x:clip}
 @media(max-width:860px){input,select,textarea{font-size:16px!important}.hggsp .rail{position:relative;top:auto}.hggsp body::before{display:none}}
 @media(max-width:480px){.short-answer{flex-direction:column}.short-answer input{width:100%;min-height:48px}.short-answer .btn{align-self:flex-start;min-height:44px}.oitem.draggable-order{padding:8px 6px;grid-template-columns:40px 18px minmax(0,1fr) auto;gap:4px}.drag-handle{min-width:40px}.oitem .mv{flex-direction:column}.oitem .mv button{height:36px;width:40px}}
 .oitem.drop-before{box-shadow:0 -3px 0 var(--war)}.oitem.drop-after{box-shadow:0 3px 0 var(--war)}
+/* A slightly more compact default layout on phones, without disabling pinch zoom. */
+@media (max-width: 600px) {
+  html.hggsp { font-size: 15.5px; }
+  .hggsp body { font-size: 15px; }
+  .hggsp .wrap, .hggsp .qcats, .hggsp .qcat { min-width: 0; }
+  .hggsp .qcat .sc { flex-wrap: wrap; gap: 4px 12px; }
+}
+@media (max-width: 460px) {
+  .hggsp .qcats { grid-template-columns: minmax(0, 1fr); }
+}
