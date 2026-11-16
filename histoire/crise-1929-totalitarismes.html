@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="fr" class="histoire">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Révisions Histoire Terminale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: un cahier de révision sérieux, net, efficace
+   IDEA: la une d'un quotidien des années 1930 : bandeau, colonnes, filets épais
+   PICTURE: une frise 1929-1939 cliquable en page d'accueil, puis le quiz lui-même
+   COLOUR and TYPE: papier blanc, encre noire, bleu d'encre du correcteur ; Archivo étroit + Source Serif
+   LAYOUT: bandeau de journal, colonnes qui s'empilent sous 600px */
+:root{color-scheme:light dark;
+--bg:light-dark(#ffffff,#111111);--paper:light-dark(#f4f4f4,#1c1c1c);--ink:light-dark(#121212,#ededed);
+--mute:light-dark(#5b5b5b,#a3a3a3);--rule:light-dark(#121212,#ededed);--line:light-dark(#d9d9d9,#303030);
+--blue:light-dark(#bd1026,#f16b7a);--blue-bg:light-dark(#fae9ec,#321b20);
+--ok:light-dark(#303030,#dedede);--ok-bg:light-dark(#ededed,#303030);
+--ko:light-dark(#bd1026,#f16b7a);--ko-bg:light-dark(#fae9ec,#321b20)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 "Source Serif 4",Georgia,serif;overflow-x:clip}
+h1,h2,h3,.nav a,.btn,.tag,.k{font-family:Archivo,"Arial Narrow",sans-serif}
+h1{font-size:clamp(34px,6vw,52px);line-height:1.02;font-stretch:72%;font-weight:900;margin:0;text-wrap:balance}
+h2{font-size:clamp(26px,4vw,34px);line-height:1.08;font-stretch:80%;font-weight:800;margin:0 0 10px;text-wrap:balance}
+h3{font-size:19px;font-weight:700;font-stretch:90%;margin:26px 0 8px;border-top:2px solid var(--rule);padding-top:8px}
+a{color:var(--blue)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 max(4vw,16px)}
+header{border-bottom:5px double var(--rule);padding-top:14px;background:var(--bg);position:sticky;top:0;z-index:5}
+.mast{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.mast b{font-family:Archivo,sans-serif;font-stretch:65%;font-weight:900;font-size:clamp(24px,4vw,30px);letter-spacing:-.01em}
+.mast span{color:var(--mute);font-size:14px}
+.nav{display:flex;gap:4px;flex-wrap:wrap;padding:8px 0 10px}
+.nav a{text-decoration:none;color:var(--ink);font-weight:700;font-stretch:85%;padding:9px 12px;border-radius:6px;font-size:15px}
+.nav a.on{background:var(--ink);color:var(--bg)}
+main{padding:clamp(20px,4vw,44px) 0 80px}
+.lead{font-size:19px;max-width:66ch;color:var(--mute);margin:12px 0 0}
+.frise{margin:28px 0 8px;border-top:6px solid var(--rule);border-bottom:1px solid var(--rule);padding:14px 0 6px;overflow-x:auto}
+.track{position:relative;min-width:1100px;height:322px}
+.axis{position:absolute;left:0;right:0;top:160px;height:2px;background:var(--rule)}
+.yr{position:absolute;top:166px;font:700 13px Archivo,sans-serif;transform:translateX(-50%);color:var(--mute)}
+.ev{position:absolute;width:132px;font-size:13px;line-height:1.3;text-decoration:none;color:var(--ink);padding:6px 8px;border-left:3px solid var(--blue);background:var(--paper)}
+.ev.l0{top:10px}.ev.l1{top:84px}.ev.l2{top:194px}.ev.l3{top:262px}
+.ev b{display:block;font:800 14px Archivo,sans-serif;color:var(--blue)}
+.ev:hover{background:var(--blue-bg)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:22px;margin-top:26px}
+.card{border-top:3px solid var(--rule);padding-top:10px}
+.card h2{font-size:24px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.row a{text-decoration:none;color:var(--ink);font-weight:600}
+.row a:hover{color:var(--blue)}
+.tag{font-size:12px;font-weight:700;border:1.5px solid currentColor;border-radius:4px;padding:1px 6px;color:var(--blue);white-space:nowrap}
+.best{font:700 14px Archivo,sans-serif;color:var(--mute);white-space:nowrap}
+.best.g{color:var(--ok)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:10px 18px;border-radius:8px;border:2px solid var(--ink);background:var(--ink);color:var(--bg);font-weight:800;font-size:16px;cursor:pointer;text-decoration:none;font-stretch:90%}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn:focus-visible,.opt:focus-visible,input:focus-visible,.chip:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.fiche{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:36px}
+.fiche aside{border-left:1px solid var(--line);padding-left:24px}
+.fiche p,.fiche li{max-width:68ch}
+.fiche ul{padding-left:20px}.fiche li{margin:5px 0}
+.kv{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;font-size:15px;margin:0}
+.kv dt{font:800 14px Archivo,sans-serif;color:var(--blue);white-space:nowrap}
+.kv dd{margin:0}
+.piege{background:var(--ko-bg);border-left:4px solid var(--ko);padding:12px 14px;margin-top:22px;font-size:16px}
+.ppo{display:inline-block;font:800 12px Archivo,sans-serif;background:var(--blue);color:#fff;border-radius:4px;padding:2px 7px;margin-bottom:8px}
+.qbox{max-width:760px}
+.prog{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin:14px 0 22px}
+.prog i{display:block;height:100%;background:var(--blue);transition:width .3s}
+.meta{display:flex;justify-content:space-between;font:700 14px Archivo,sans-serif;color:var(--mute);gap:10px;flex-wrap:wrap}
+.qt{font-size:clamp(21px,3vw,26px);line-height:1.3;font-weight:600;margin:8px 0 18px;text-wrap:pretty}
+.k{font-size:12px;font-weight:800;color:var(--blue)}
+.opts{display:grid;gap:10px}
+.opt{text-align:left;font:inherit;font-size:17px;padding:13px 16px;border:2px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);cursor:pointer;min-height:48px}
+.opt:hover:not([disabled]){border-color:var(--ink)}
+.opt.ok{border-color:var(--ok);background:var(--ok-bg)}
+.opt.ko{border-color:var(--ko);background:var(--ko-bg)}
+.opt.pick{border-color:var(--blue);background:var(--blue-bg)}
+input[type=text]{width:100%;font:inherit;font-size:18px;padding:13px 14px;border:2px solid var(--ink);border-radius:8px;background:var(--bg);color:var(--ink)}
+.fb{margin-top:18px;padding:14px 16px;border-radius:8px;font-size:16px}
+.fb.ok{background:var(--ok-bg);border-left:4px solid var(--ok)}
+.fb.ko{background:var(--ko-bg);border-left:4px solid var(--ko)}
+.fb b{font-family:Archivo,sans-serif}
+.slots{display:grid;gap:6px;margin-bottom:12px;counter-reset:s}
+.slot{min-height:44px;border:2px dashed var(--line);border-radius:8px;padding:10px 12px 10px 40px;position:relative;font-size:16px}
+.slot::before{counter-increment:s;content:counter(s);position:absolute;left:12px;font:800 15px Archivo,sans-serif;color:var(--blue)}
+.slot.full{border-style:solid;border-color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-size:15px;padding:9px 12px;border-radius:8px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer;min-height:44px}
+.score{font:900 clamp(64px,14vw,120px)/1 Archivo,sans-serif;font-stretch:70%}
+.score small{font-size:.35em;color:var(--mute)}
+.bars{margin:18px 0;display:grid;gap:8px}
+.bar{display:grid;grid-template-columns:minmax(0,1fr) 54px;gap:4px 10px;font-size:15px}
+.bar .t{grid-column:1/-1;display:flex;justify-content:space-between;gap:8px}
+.bar .m{height:10px;background:var(--line);border-radius:5px;overflow:hidden;grid-column:1/-1}
+.bar .m i{display:block;height:100%}
+.err{border-top:1px solid var(--line);padding:12px 0;font-size:16px}
+.err .a{color:var(--ok);font-weight:600}.err .u{color:var(--ko)}
+.setup{display:grid;gap:14px;max-width:640px}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button{font:700 15px Archivo,sans-serif;padding:10px 16px;border-radius:8px;border:2px solid var(--ink);background:var(--bg);color:var(--ink);cursor:pointer;min-height:44px}
+.seg button.on{background:var(--ink);color:var(--bg)}
+.search{margin:14px 0 6px;max-width:420px}
+table{border-collapse:collapse;width:100%;font-size:15px}
+td,th{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:800 13px Archivo,sans-serif;border-bottom:2px solid var(--rule)}
+td:first-child{font:700 14px Archivo,sans-serif;white-space:nowrap;color:var(--blue)}
+.small{font-size:14px;color:var(--mute)}
+@media(max-width:800px){.fiche{grid-template-columns:minmax(0,1fr)}.fiche aside{border-left:0;padding-left:0}}
+@media(max-width:600px){body{font-size:16px}.nav a{padding:8px 9px;font-size:14px}header{position:static}
+table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:8px;border-bottom:1px solid var(--line)}.stack td{border:0;padding:2px 0;white-space:normal}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"><script src="../theme.js"></script><link rel="stylesheet" href="../revision-pages.css">
+</head>
+<body>
+<header><div class="wrap">
+<div class="mast"><a href="index.html">← Chapitres d’histoire</a><b>Histoire · Terminale</b><span>Thème 1 · chapitres 1 et 2</span><button class="theme-toggle" type="button" data-theme-toggle>☾ Mode sombre</button></div>
+<nav class="nav" id="nav">
+<a href="#accueil">Accueil</a><a href="#fiches">Fiches</a><a href="#flashcards">Flashcards</a><a href="#quiz">Quiz</a><a href="#evaluation">Évaluation</a><a href="#reperes">Repères</a>
+</nav></div></header>
+<main><div class="wrap" id="app">Chargement…</div></main>
+<script>
+{
+/* ================= CONTENU ================= */
+const CH=[
+{id:"c1",n:"Chapitre 1",t:"L'impact de la crise de 1929 : déséquilibres économiques et sociaux",
+pb:"Comment une crise boursière américaine devient-elle une crise mondiale qui bouleverse les sociétés et fragilise les démocraties ?",
+themes:[
+{id:"causes",t:"Des années 1920 au krach de Wall Street",
+intro:"Derrière la prospérité américaine des années 1920 se cachent des déséquilibres : surproduction, inégalités et spéculation. Le krach d'octobre 1929 les fait éclater et enclenche une réaction en chaîne.",
+sec:[["Une prospérité fragile",["Les États-Unis sont la 1re puissance économique : production de masse (taylorisme, fordisme), consommation à crédit, automobile, électroménager.","<b>Surproduction</b> : l'offre augmente plus vite que la demande, surtout dans l'agriculture (prix agricoles en baisse, fermiers endettés dès les années 1920).","<b>Inégalités</b> : les salaires progressent moins vite que les profits, donc la consommation finit par plafonner.","<b>Spéculation</b> : on achète des actions à crédit (avec un faible apport) en pariant sur la hausse. Les cours ne reflètent plus l'économie réelle : c'est une bulle."]],
+["Le krach et l'enchaînement de la crise",["<b>Jeudi 24 octobre 1929</b> (« Jeudi noir ») : panique à la Bourse de New York (Wall Street), environ 13 millions d'actions vendues. Nouvel effondrement le <b>mardi 29 octobre</b>.","Le Dow Jones perd environ 89 % entre 1929 et 1932.","Réaction en chaîne : krach boursier → crise bancaire (environ 9 000 faillites de banques de 1930 à 1933) → crise du crédit → baisse de la consommation et de l'investissement → faillites d'entreprises et chômage.","<b>Déflation</b> : les prix, la production et les revenus baissent ensemble. La production industrielle américaine recule d'environ 45 % entre 1929 et 1932.","Le président républicain Herbert Hoover, libéral, intervient peu : il pense que le marché se rétablira seul (« la prospérité est au coin de la rue »)."]]],
+dates:[["24 oct. 1929","Jeudi noir à Wall Street"],["29 oct. 1929","Mardi noir, nouvel effondrement"],["1930-1933","Vague de faillites bancaires aux États-Unis"]],
+notions:[["Spéculation","Achat d'un bien (ici des actions) dans le seul but de le revendre plus cher."],["Krach","Effondrement brutal des cours de la Bourse."],["Surproduction","Production supérieure à ce que le marché peut absorber."],["Déflation","Baisse générale et durable des prix, qui entraîne baisse de la production et des revenus."],["Libéralisme économique","Doctrine selon laquelle l'État doit intervenir le moins possible dans l'économie."]],
+acteurs:[["Herbert Hoover","Président républicain des États-Unis (1929-1933)"]],
+piege:"Le krach n'est pas la cause unique de la crise : c'est le déclencheur. Les causes profondes sont la surproduction, les inégalités et la spéculation.",
+q:[
+["q","Quel jour est surnommé le « Jeudi noir » ?",["24 octobre 1929","29 octobre 1929","4 mars 1933","11 novembre 1929"],0,"Le 24 octobre 1929, la panique s'empare de Wall Street. Le 29 octobre est le « Mardi noir »."],
+["t","Dans quelle ville se trouve la Bourse dont l'effondrement déclenche la crise ?",["New York","new york city","wall street"],"La Bourse de New York, à Wall Street."],
+["q","Laquelle n'est PAS une cause profonde de la crise de 1929 ?",["La surproduction","La spéculation boursière","Les inégalités de revenus","Le protectionnisme de la loi Hawley-Smoot"],3,"La loi Hawley-Smoot date de juin 1930 : c'est une réaction à la crise qui l'aggrave, pas une de ses causes."],
+["t","Quel mot désigne l'achat d'actions dans le seul but de les revendre plus cher ?",["spéculation","speculer","la speculation"],"La spéculation, souvent à crédit, crée une bulle boursière."],
+["v","Le président Hoover lance un vaste programme d'intervention de l'État dès 1929.",false,"Faux : Hoover est libéral et intervient peu. C'est Roosevelt qui lance le New Deal en 1933."],
+["t","Comment appelle-t-on une baisse générale et durable des prix ?",["déflation"],"La déflation : prix, production et revenus baissent ensemble."],
+["o","Remets la réaction en chaîne dans l'ordre.",["Krach boursier","Faillites bancaires","Effondrement du crédit","Baisse de la consommation","Faillites d'entreprises et chômage"],"Krach → banques → crédit → consommation → entreprises et chômage."],
+["q","De combien environ le Dow Jones chute-t-il entre 1929 et 1932 ?",["Environ 20 %","Environ 50 %","Environ 89 %","Environ 99 %"],2,"L'indice passe d'environ 381 points (septembre 1929) à 41 points (juillet 1932)."],
+["q","Combien de banques américaines font faillite entre 1930 et 1933 ?",["Une centaine","Environ 1 000","Environ 9 000","Plus de 50 000"],2,"Environ 9 000 faillites : les épargnants perdent leurs économies, le crédit s'effondre."],
+["v","Dans les années 1920, l'agriculture américaine connaît déjà des difficultés de surproduction.",true,"Vrai : les prix agricoles baissent et les fermiers s'endettent avant même le krach."]]},
+
+{id:"mondiale",t:"D'une crise américaine à une crise mondiale",
+intro:"Parce que les États-Unis sont le banquier et le premier marché du monde, leur crise se diffuse partout à partir de 1930-1931, par la finance et par le commerce.",
+sec:[["La diffusion par la finance",["Les banques américaines rapatrient les capitaux prêtés à l'Europe, en particulier à l'Allemagne (plans Dawes 1924 et Young 1929).","<b>Mai 1931</b> : faillite du <b>Kredit-Anstalt</b> de Vienne, la plus grande banque d'Autriche. La crise bancaire gagne l'Allemagne (juillet 1931) puis toute l'Europe centrale.","Juin 1931 : le <b>moratoire Hoover</b> suspend pour un an le paiement des dettes de guerre et des réparations.","<b>Septembre 1931</b> : le Royaume-Uni dévalue la livre sterling et abandonne l'étalon-or. Les États-Unis dévaluent le dollar en 1933-1934. La France reste attachée au franc fort (« bloc-or ») jusqu'en 1936 : la crise y arrive plus tard mais dure plus longtemps."]],
+["La diffusion par le commerce",["<b>Juin 1930 : loi Hawley-Smoot</b>. Les États-Unis augmentent fortement leurs droits de douane ; les autres pays répliquent.","Repli sur les empires coloniaux (conférence d'Ottawa, 1932, pour l'Empire britannique) et recherche d'autarcie.","Le commerce mondial s'effondre d'environ deux tiers en valeur entre 1929 et 1933.","Les pays exportateurs de matières premières (Amérique latine, colonies, Australie) sont frappés par la chute des cours.","La conférence économique de Londres (1933) échoue : chaque pays mène sa propre politique. L'URSS, économie planifiée et fermée, est peu touchée, ce que sa propagande met en avant."]]],
+dates:[["juin 1930","Loi Hawley-Smoot (protectionnisme américain)"],["mai 1931","Faillite du Kredit-Anstalt de Vienne"],["juin 1931","Moratoire Hoover"],["sept. 1931","Dévaluation de la livre sterling"],["1932","Conférence d'Ottawa (préférence impériale)"],["1933","Échec de la conférence de Londres"]],
+notions:[["Protectionnisme","Politique qui protège l'économie nationale de la concurrence étrangère (droits de douane, quotas)."],["Dévaluation","Baisse volontaire de la valeur d'une monnaie pour rendre les exportations moins chères."],["Étalon-or","Système où la valeur de la monnaie est garantie par une quantité d'or."],["Autarcie","Situation d'un pays qui cherche à se suffire à lui-même, sans échanges extérieurs."]],
+acteurs:[["Herbert Hoover","Président américain, auteur du moratoire de 1931"]],
+piege:"La crise ne touche pas tous les pays en même temps ni de la même façon : la France est touchée tard (1931) et longtemps ; l'URSS est relativement épargnée.",
+q:[
+["q","Quelle banque fait faillite à Vienne en mai 1931 ?",["La Deutsche Bank","Le Kredit-Anstalt","La Banque de France","La Danat Bank"],1,"Le Kredit-Anstalt, première banque autrichienne : sa chute propage la crise bancaire en Europe."],
+["t","Quelle loi américaine de 1930 relève fortement les droits de douane ?",["Hawley-Smoot","loi hawley smoot","smoot-hawley","hawley smoot tariff"],"La loi Hawley-Smoot (juin 1930) déclenche une vague de protectionnisme."],
+["q","Pourquoi l'Allemagne est-elle particulièrement touchée ?",["Elle exporte surtout du café","Son économie dépend des capitaux américains","Elle a adopté le New Deal","Elle n'a pas de banques"],1,"Les capitaux américains prêtés depuis le plan Dawes (1924) sont rapatriés après le krach."],
+["t","En quelle année le Royaume-Uni dévalue-t-il la livre sterling ?",["1931"],"En septembre 1931, la livre quitte l'étalon-or."],
+["v","Le commerce mondial s'effondre d'environ deux tiers en valeur entre 1929 et 1933.",true,"Vrai : c'est l'effet combiné de la crise et du protectionnisme."],
+["q","Quel pays est relativement épargné par la crise grâce à son économie planifiée et fermée ?",["Le Royaume-Uni","L'URSS","Le Brésil","L'Autriche"],1,"L'URSS, isolée du marché mondial, est peu touchée, ce que la propagande soviétique exploite."],
+["t","Comment appelle-t-on la baisse volontaire de la valeur d'une monnaie ?",["dévaluation"],"La dévaluation rend les exportations moins chères."],
+["v","La France est l'un des premiers pays européens touchés par la crise, dès 1929.",false,"Faux : la France est touchée plus tard, vers 1931, mais la crise y dure jusqu'à la fin des années 1930."],
+["q","Que décide le moratoire Hoover de juin 1931 ?",["La fermeture des banques","La suspension pour un an des dettes de guerre et des réparations","La dévaluation du dollar","La fin de la prohibition"],1,"Il suspend pour un an les paiements entre États liés à la Première Guerre mondiale."],
+["o","Classe ces événements dans l'ordre chronologique.",["Jeudi noir","Loi Hawley-Smoot","Faillite du Kredit-Anstalt","Dévaluation de la livre sterling","Conférence d'Ottawa"],"Octobre 1929 → juin 1930 → mai 1931 → septembre 1931 → 1932."]]},
+
+{id:"chomage",t:"Le chômage de masse et ses conséquences",
+intro:"La crise fait apparaître un phénomène nouveau par son ampleur : le chômage de masse. Il appauvrit des millions de familles et discrédite les démocraties libérales.",
+sec:[["Des sociétés frappées par la misère",["<b>États-Unis</b> : environ 12 à 13 millions de chômeurs en 1933, soit près de 25 % des actifs, sans assurance chômage.","Bidonvilles surnommés <b>Hoovervilles</b>, soupes populaires, vagabondage. En 1932, la marche des anciens combattants (Bonus Army) sur Washington est dispersée par l'armée.","Le <b>Dust Bowl</b> (tempêtes de poussière dans les Grandes Plaines) ruine des fermiers qui migrent vers la Californie, raconté dans <i>Les Raisins de la colère</i> de Steinbeck (1939) et photographié par Dorothea Lange (<i>Migrant Mother</i>, 1936).","<b>Allemagne</b> : environ 6 millions de chômeurs début 1932 (environ 30 % des actifs). Royaume-Uni : près de 3 millions. France : chômage moins massif mais durable."]],
+["Des démocraties fragilisées",["Le libéralisme et les régimes parlementaires sont accusés d'impuissance.","Les partis extrémistes progressent : le parti nazi passe de 2,6 % des voix (1928) à 18,3 % (1930) puis 37,3 % (juillet 1932). Les communistes progressent aussi.","Montée de la xénophobie et de l'antisémitisme : on cherche des boucs émissaires.","En France, les ligues d'extrême droite manifestent le <b>6 février 1934</b> devant la Chambre des députés (15 morts)."]]],
+dates:[["1932","Marche de la Bonus Army à Washington"],["1933","Pic du chômage aux États-Unis (environ 25 %)"],["juil. 1932","Le parti nazi obtient 37,3 % des voix"],["6 févr. 1934","Émeute des ligues à Paris"]],
+notions:[["Chômage de masse","Chômage qui touche une part très importante de la population active."],["Hooverville","Bidonville de chômeurs aux États-Unis, nommé par dérision d'après le président Hoover."],["Dust Bowl","Tempêtes de poussière qui ravagent les Grandes Plaines américaines dans les années 1930."],["Ligues","Mouvements d'extrême droite antiparlementaires en France dans l'entre-deux-guerres."]],
+acteurs:[["John Steinbeck","Auteur des Raisins de la colère (1939)"],["Dorothea Lange","Photographe de la misère rurale (Migrant Mother)"]],
+piege:"La crise n'explique pas à elle seule l'arrivée de Hitler au pouvoir, mais elle a fortement accéléré la progression électorale des nazis.",
+q:[
+["q","Quel est environ le taux de chômage aux États-Unis en 1933 ?",["5 %","10 %","25 %","50 %"],2,"Environ un actif sur quatre, soit 12 à 13 millions de personnes."],
+["t","Comment appelle-t-on les bidonvilles de chômeurs aux États-Unis ?",["Hoovervilles","hooverville"],"Les Hoovervilles, du nom du président Hoover jugé responsable."],
+["q","Combien de chômeurs compte l'Allemagne au début de 1932 ?",["Environ 600 000","Environ 2 millions","Environ 6 millions","Environ 20 millions"],2,"Environ 6 millions de chômeurs : un terrain favorable au parti nazi."],
+["t","Quel phénomène climatique ruine les fermiers des Grandes Plaines dans les années 1930 ?",["Dust Bowl","dust bowl","tempetes de poussiere"],"Le Dust Bowl pousse des milliers de familles à migrer vers la Californie."],
+["t","Quel écrivain raconte l'exode des fermiers ruinés dans Les Raisins de la colère ?",["Steinbeck","john steinbeck"],"John Steinbeck, Les Raisins de la colère, 1939."],
+["q","Quel score obtient le parti nazi aux élections de juillet 1932 ?",["2,6 %","18,3 %","37,3 %","51 %"],2,"37,3 % : il devient le premier parti au Reichstag, sans majorité absolue."],
+["v","La crise renforce la confiance dans le libéralisme économique.",false,"Faux : elle discrédite le libéralisme et les démocraties parlementaires, jugés impuissants."],
+["q","Que se passe-t-il à Paris le 6 février 1934 ?",["La victoire du Front populaire","Une émeute des ligues d'extrême droite","La signature des accords Matignon","Une grève générale"],1,"Les ligues manifestent devant la Chambre : 15 morts. La gauche y voit une menace fasciste."],
+["t","Quelle photographe a réalisé Migrant Mother en 1936 ?",["Dorothea Lange","lange"],"Dorothea Lange, pour l'administration du New Deal."],
+["v","En 1932, des anciens combattants marchent sur Washington pour réclamer le versement d'une prime.",true,"Vrai : c'est la Bonus Army, dispersée par l'armée."]]},
+
+{id:"reponses",ppo:"Points de passage : 1933, le New Deal · 1936, les accords Matignon",t:"Les réponses à la crise : New Deal et Front populaire",
+intro:"Face à la crise, les démocraties inventent un nouveau rôle pour l'État : intervenir dans l'économie et protéger les travailleurs. Les régimes autoritaires répondent, eux, par l'autarcie et le réarmement.",
+sec:[["Le New Deal de Roosevelt (États-Unis)",["Le démocrate <b>Franklin Delano Roosevelt</b> est élu en novembre 1932 et prend ses fonctions le <b>4 mars 1933</b>.","Les <b>Cent Jours</b> (mars-juin 1933) : fermeture puis assainissement des banques (Emergency Banking Act), séparation des banques de dépôt et d'affaires (Glass-Steagall Act), <b>AAA</b> (indemniser les agriculteurs pour réduire la production et faire remonter les prix), <b>NIRA</b> (salaire minimum, droit syndical, codes de concurrence), <b>TVA</b> (grands travaux dans la vallée du Tennessee).","Second New Deal (1935) : <b>Social Security Act</b> (retraites et assurance chômage), Wagner Act (droits syndicaux), WPA (grands travaux, millions d'emplois).","Roosevelt s'adresse aux Américains à la radio : les <b>causeries au coin du feu</b>.","Bilan : la confiance revient, mais le chômage reste élevé (rechute en 1937). C'est le réarmement et la guerre qui font vraiment sortir de la crise. Le New Deal invente pourtant un <b>État-providence</b> américain.","En 1936, l'économiste britannique <b>John Maynard Keynes</b> théorise la relance par la demande et l'intervention de l'État."]],
+["Le Front populaire (France)",["Après le 6 février 1934, la gauche s'unit contre le « fascisme » : SFIO (Léon Blum), Parti communiste (Maurice Thorez), radicaux (Édouard Daladier).","Victoire aux élections d'avril-mai 1936. <b>Léon Blum</b> devient président du Conseil en juin 1936, premier socialiste à ce poste. Trois femmes entrent au gouvernement alors que les femmes ne votent pas.","Grèves avec occupation d'usines (environ 2 millions de grévistes).","<b>Accords Matignon (7-8 juin 1936)</b> entre patronat, CGT et gouvernement : hausse des salaires de 7 à 15 %, conventions collectives, délégués du personnel, liberté syndicale.","Lois de juin 1936 : <b>deux semaines de congés payés</b> et <b>semaine de 40 heures</b>. Aussi : scolarité obligatoire jusqu'à 14 ans, Office du blé, dévaluation du franc (septembre 1936).","Bilan : grandes avancées sociales, mais résultats économiques décevants (inflation, production qui stagne). Blum démissionne en juin 1937."]],
+["Les régimes autoritaires",["En Allemagne, les nazis résorbent le chômage par les grands travaux (autoroutes) et surtout le <b>réarmement</b> et le plan de quatre ans (1936) tourné vers l'autarcie et la guerre."]]],
+dates:[["nov. 1932","Élection de Roosevelt"],["4 mars 1933","Investiture de Roosevelt, début des Cent Jours"],["1935","Social Security Act"],["1936","Keynes, Théorie générale"],["mai 1936","Victoire du Front populaire"],["7-8 juin 1936","Accords Matignon"],["juin 1936","Congés payés et semaine de 40 heures"]],
+notions:[["New Deal","« Nouvelle donne » : politique d'intervention de l'État menée par Roosevelt à partir de 1933."],["Interventionnisme","Action de l'État pour orienter et relancer l'économie."],["État-providence","État qui protège les citoyens contre les risques sociaux (chômage, vieillesse, maladie)."],["Politique de relance","Soutien de la demande (grands travaux, hausse des revenus) pour relancer l'activité."],["Convention collective","Accord entre patronat et syndicats qui fixe les conditions de travail d'une branche."]],
+acteurs:[["Franklin D. Roosevelt","Président démocrate des États-Unis (1933-1945)"],["J. M. Keynes","Économiste britannique, théoricien de la relance"],["Léon Blum","Chef de la SFIO, président du Conseil (1936-1937)"],["Maurice Thorez","Chef du Parti communiste français"]],
+piege:"Roosevelt n'applique pas une théorie de Keynes : le New Deal est pragmatique et précède la Théorie générale (1936).",
+q:[
+["t","Quel président américain lance le New Deal ?",["Roosevelt","franklin roosevelt","franklin delano roosevelt","fdr"],"Franklin Delano Roosevelt, démocrate, investi le 4 mars 1933."],
+["q","Comment appelle-t-on les premiers mois du New Deal (mars-juin 1933) ?",["Les Cent Jours","Les Trente Glorieuses","La Grande Terreur","Les années folles"],0,"Les Cent Jours : une avalanche de lois votées très vite."],
+["q","Quel est l'objectif de l'AAA ?",["Créer une armée de chômeurs","Réduire la production agricole pour faire remonter les prix","Nationaliser les banques","Interdire les syndicats"],1,"L'Agricultural Adjustment Act indemnise les fermiers qui réduisent leur production."],
+["t","Quelle loi de 1935 crée retraites et assurance chômage aux États-Unis ?",["Social Security Act","social security"],"Le Social Security Act, pilier de l'État-providence américain."],
+["t","Comment s'appellent les discours radiophoniques de Roosevelt ?",["causeries au coin du feu","fireside chats","causeries au coin du feux"],"Les causeries au coin du feu (fireside chats)."],
+["t","Quel économiste publie en 1936 une théorie de la relance par l'État ?",["Keynes","john maynard keynes","jm keynes"],"John Maynard Keynes, Théorie générale de l'emploi, de l'intérêt et de la monnaie."],
+["v","Le New Deal suffit à faire disparaître le chômage aux États-Unis dès 1935.",false,"Faux : le chômage reste élevé et remonte en 1937. Le plein-emploi revient avec la guerre."],
+["t","Qui devient président du Conseil en juin 1936 ?",["Léon Blum","blum"],"Léon Blum, chef de la SFIO, premier socialiste à diriger le gouvernement."],
+["q","Laquelle de ces mesures ne fait PAS partie des acquis du Front populaire ?",["Deux semaines de congés payés","La semaine de 40 heures","Les conventions collectives","Le droit de vote des femmes"],3,"Les femmes n'obtiennent le droit de vote qu'en 1944. Trois femmes sont pourtant ministres en 1936."],
+["t","Quels accords de juin 1936 augmentent les salaires de 7 à 15 % ?",["accords Matignon","matignon","accords de matignon"],"Les accords Matignon (7-8 juin 1936), signés entre patronat, CGT et gouvernement."],
+["q","Quels partis forment le Front populaire ?",["SFIO, PCF et radicaux","Ligues et radicaux","PCF et NSDAP","SFIO et Croix-de-Feu"],0,"Socialistes (Blum), communistes (Thorez) et radicaux (Daladier)."],
+["v","Le Front populaire se forme en réaction à l'émeute du 6 février 1934.",true,"Vrai : la gauche s'unit contre ce qu'elle perçoit comme une menace fasciste."],
+["q","Comment l'Allemagne nazie fait-elle surtout baisser le chômage ?",["Par l'assurance chômage","Par le réarmement et les grands travaux","Par la baisse du temps de travail","Par les congés payés"],1,"Grands travaux puis surtout réarmement et plan de quatre ans (1936) : une économie tournée vers la guerre."]]},
+
+{id:"amlat",ppo:"Point de passage : les conséquences de la crise en Amérique latine",t:"Les conséquences de la crise en Amérique latine",
+intro:"L'Amérique latine vit de l'exportation de quelques produits. Quand les cours s'effondrent, la crise devient politique : coups d'État, régimes autoritaires et populistes, et nouvelle stratégie économique.",
+sec:[["Des économies d'exportation frappées",["Économies spécialisées dans un ou deux produits vendus aux États-Unis et à l'Europe : café (Brésil, Colombie), viande et blé (Argentine), cuivre et nitrates (Chili), étain (Bolivie).","Les prix et les volumes s'effondrent avec le protectionnisme des pays riches. Le Chili est considéré par la SDN comme l'un des pays les plus touchés au monde.","Au Brésil, l'État achète et <b>détruit d'énormes stocks de café</b> (brûlés ou jetés à la mer) pour soutenir les prix."]],
+["Des bouleversements politiques",["Vague de coups d'État en 1930-1931. <b>Argentine</b> : coup d'État du général Uriburu (septembre 1930), début de la « décennie infâme ».","<b>Brésil</b> : <b>Getúlio Vargas</b> prend le pouvoir après la révolution de 1930 ; en 1937, il instaure l'<b>Estado Novo</b>, régime autoritaire et nationaliste.","<b>Mexique</b> : Lázaro Cárdenas (1934-1940) mène une réforme agraire et <b>nationalise le pétrole en 1938</b>.","Ces régimes sont souvent <b>populistes</b> : un chef qui s'adresse directement au peuple, nationalisme, mesures sociales et contrôle des syndicats."]],
+["Une nouvelle stratégie économique",["L'État intervient davantage et développe l'<b>industrialisation par substitution aux importations</b> (ISI) : produire sur place ce qu'on importait.","La crise marque la fin du modèle exportateur libéral du XIXe siècle."]]],
+dates:[["sept. 1930","Coup d'État d'Uriburu en Argentine"],["oct.-nov. 1930","Vargas prend le pouvoir au Brésil"],["1937","Estado Novo au Brésil"],["1938","Nationalisation du pétrole au Mexique"]],
+notions:[["Économie d'exportation","Économie fondée sur la vente à l'étranger de quelques produits primaires."],["Populisme","Régime ou discours qui oppose le peuple aux élites, autour d'un chef qui prétend l'incarner."],["ISI","Industrialisation par substitution aux importations : fabriquer localement ce que l'on importait."]],
+acteurs:[["Getúlio Vargas","Dirigeant du Brésil (1930-1945), Estado Novo"],["José Félix Uriburu","Général argentin, coup d'État de 1930"],["Lázaro Cárdenas","Président du Mexique (1934-1940)"]],
+piege:"Ne pas confondre populisme latino-américain et totalitarisme : l'Estado Novo s'inspire des fascismes européens mais reste une dictature autoritaire et nationaliste.",
+q:[
+["q","Pourquoi l'Amérique latine est-elle très touchée par la crise ?",["Elle dépend de l'exportation de quelques produits primaires","Elle a trop d'usines","Elle est en guerre","Elle a adopté le New Deal"],0,"Café, viande, cuivre… La chute des cours et le protectionnisme ruinent ces économies."],
+["t","Quel produit le Brésil détruit-il en masse pour soutenir les prix ?",["café","le cafe"],"Des millions de sacs de café sont brûlés ou jetés à la mer."],
+["t","Quel dirigeant prend le pouvoir au Brésil en 1930 ?",["Vargas","getulio vargas"],"Getúlio Vargas, qui fonde l'Estado Novo en 1937."],
+["t","Comment s'appelle le régime autoritaire instauré par Vargas en 1937 ?",["Estado Novo","etat nouveau"],"L'Estado Novo (« État nouveau »)."],
+["q","Que fait le Mexique de Cárdenas en 1938 ?",["Il dévalue le peso","Il nationalise le pétrole","Il rejoint l'Axe","Il détruit son café"],1,"Nationalisation du pétrole le 18 mars 1938, symbole du nationalisme économique."],
+["v","En 1930, un coup d'État militaire renverse le gouvernement argentin.",true,"Vrai : le général Uriburu prend le pouvoir en septembre 1930."],
+["t","Comment appelle-t-on la stratégie qui consiste à produire localement ce qu'on importait ?",["industrialisation par substitution aux importations","isi","substitution aux importations"],"L'industrialisation par substitution aux importations (ISI)."],
+["q","Quel terme décrit le mieux le régime de Vargas ?",["Démocratie libérale","Régime totalitaire","Régime autoritaire et populiste","Monarchie parlementaire"],2,"Autoritaire, nationaliste, populiste, inspiré par les fascismes mais pas totalitaire."],
+["v","La crise renforce le modèle libéral exportateur en Amérique latine.",false,"Faux : elle y met fin et pousse à l'intervention de l'État et à l'industrialisation."]]}
+]},
+{id:"c2",n:"Chapitre 2",t:"Les régimes totalitaires",
+pb:"Quelles sont les caractéristiques communes et les différences des régimes soviétique, fasciste et nazi, et en quoi menacent-ils l'ordre international ?",
+themes:[
+{id:"notion",t:"Qu'est-ce qu'un régime totalitaire ?",
+intro:"Un régime totalitaire ne se contente pas d'interdire l'opposition : il veut contrôler toute la société et transformer les individus. C'est un type de régime nouveau, né dans l'Europe de l'entre-deux-guerres.",
+sec:[["Origine et définition",["Le mot naît en Italie au début des années 1920 chez des antifascistes, puis Mussolini le revendique (« État totalitaire »).","La philosophe <b>Hannah Arendt</b> le théorise dans <i>Les Origines du totalitarisme</i> (1951) ; les politologues Friedrich et Brzezinski en proposent des critères (1956).","Différence avec une simple dictature : la dictature veut l'obéissance ; le régime totalitaire veut l'<b>adhésion</b> des masses et la création d'un <b>homme nouveau</b>."]],
+["Les caractéristiques communes",["Un <b>parti unique</b> de masse et un <b>chef</b> charismatique objet d'un culte (Staline, le Duce, le Führer).","Une <b>idéologie</b> officielle qui prétend tout expliquer et transformer la société.","L'<b>encadrement</b> de toute la population : jeunesse, travail, loisirs.","La <b>propagande</b> et la censure (presse, radio, cinéma, art).","La <b>terreur</b> : police politique, camps, élimination des « ennemis ».","Le contrôle de l'économie et la désignation d'ennemis intérieurs et extérieurs."]],
+["Des différences importantes",["<b>URSS</b> : idéologie communiste, universaliste et égalitaire ; l'ennemi est un ennemi de classe (bourgeois, koulak).","<b>Nazisme</b> : idéologie raciste qui affirme l'inégalité des « races » ; l'ennemi est racial, d'abord les Juifs.","<b>Fascisme italien</b> : nationalisme et culte de l'État. Le roi et l'Église gardent une autonomie : on parle parfois de totalitarisme « inachevé ».","Le concept est débattu : pendant la guerre froide, il a servi à assimiler l'URSS à l'Allemagne nazie."]]],
+dates:[["1923-1925","Apparition du mot « totalitaire » en Italie"],["1951","Hannah Arendt, Les Origines du totalitarisme"]],
+notions:[["Totalitarisme","Régime qui veut contrôler totalement la société et les individus par un parti unique, une idéologie, la propagande et la terreur."],["Homme nouveau","Individu transformé par l'idéologie, entièrement dévoué au régime."],["Culte de la personnalité","Glorification permanente du chef."],["Propagande","Diffusion d'idées par tous les moyens pour obtenir l'adhésion."],["Embrigadement","Encadrement de la population, surtout de la jeunesse, dans des organisations du régime."]],
+acteurs:[["Hannah Arendt","Philosophe, théoricienne du totalitarisme"]],
+piege:"Ne pas écrire que les trois régimes sont identiques : ils partagent des méthodes mais ont des idéologies opposées (communisme contre nazisme).",
+q:[
+["t","Quelle philosophe publie Les Origines du totalitarisme en 1951 ?",["Hannah Arendt","arendt"],"Hannah Arendt, philosophe allemande exilée aux États-Unis."],
+["q","Qu'est-ce qui distingue un régime totalitaire d'une simple dictature ?",["Il organise des élections libres","Il cherche l'adhésion des masses et à créer un homme nouveau","Il n'a pas de chef","Il n'utilise pas la violence"],1,"La dictature veut l'obéissance ; le totalitarisme veut transformer la société et les esprits."],
+["q","Lequel n'est PAS un trait commun des régimes totalitaires ?",["Parti unique","Propagande","Pluralisme politique","Police politique"],2,"Le pluralisme est justement supprimé."],
+["v","Le mot « totalitaire » apparaît d'abord en Italie.",true,"Vrai : employé par des antifascistes, puis revendiqué par Mussolini."],
+["q","Quel ennemi désigne en priorité l'idéologie nazie ?",["Un ennemi de classe","Un ennemi racial","Le Pape","Le roi d'Italie"],1,"L'idéologie nazie est raciste : les Juifs sont désignés comme l'ennemi principal."],
+["q","Quel ennemi désigne en priorité l'idéologie stalinienne ?",["Un ennemi de classe (koulaks, bourgeois)","Un ennemi racial","Les Italiens","Les catholiques uniquement"],0,"Le communisme raisonne en termes de lutte des classes."],
+["v","L'Italie fasciste est le régime le plus complètement totalitaire des trois.",false,"Faux : le roi et l'Église gardent une autonomie ; on parle souvent de totalitarisme inachevé."],
+["t","Comment appelle-t-on la glorification permanente du chef ?",["culte de la personnalité","culte du chef","culte de la personalite"],"Le culte de la personnalité : Staline, le Duce, le Führer."],
+["t","Comment appelle-t-on l'individu que les régimes totalitaires veulent façonner ?",["homme nouveau","l homme nouveau"],"L'homme nouveau, entièrement dévoué au régime et à son idéologie."]]},
+
+{id:"urss",t:"L'URSS de Staline",
+intro:"Après la mort de Lénine, Staline s'empare de tout le pouvoir. Il transforme l'URSS à marche forcée (plans, collectivisation) et gouverne par la terreur et le culte de sa personne.",
+sec:[["La prise du pouvoir",["Révolution bolchevique d'octobre 1917 (Lénine) ; l'URSS est créée en décembre 1922.","<b>Lénine meurt en janvier 1924</b>. <b>Staline</b>, secrétaire général du Parti communiste depuis 1922, élimine ses rivaux : <b>Trotski</b> est exclu (1927), expulsé d'URSS (1929) puis assassiné au Mexique (1940).","Le Parti communiste est le parti unique. Staline défend le « socialisme dans un seul pays »."]],
+["Une économie transformée par la force",["Fin de la NEP. <b>Premier plan quinquennal</b> (1928) : économie planifiée par le Gosplan, priorité à l'industrie lourde.","<b>Collectivisation forcée</b> des terres (1929-1933) : <b>kolkhozes</b> (coopératives) et <b>sovkhozes</b> (fermes d'État).","<b>Dékoulakisation</b> : les paysans aisés (koulaks) ou supposés tels sont déportés ou tués.","Famine de 1932-1933 : 6 à 7 millions de morts en URSS, dont environ 4 millions en Ukraine (<b>Holodomor</b>)."]],
+["Encadrer et terroriser",["Culte de Staline, « le petit père des peuples » ; art officiel : le <b>réalisme socialiste</b>.","Jeunesse encadrée (pionniers, <b>Komsomol</b>). <b>Stakhanovisme</b> (1935) : le mineur Alexeï Stakhanov aurait extrait 14 fois la norme de charbon, modèle de l'ouvrier exemplaire.","Police politique (Guépéou puis <b>NKVD</b> en 1934) et <b>Goulag</b>, administration des camps de travail forcé (1930).","L'assassinat de Kirov (décembre 1934) sert de prétexte à une répression croissante, jusqu'à la Grande Terreur (1937-1938)."]]],
+dates:[["janv. 1924","Mort de Lénine"],["1928","Premier plan quinquennal"],["1929","Début de la collectivisation forcée, expulsion de Trotski"],["1930","Création du Goulag"],["1932-1933","Famine, Holodomor en Ukraine"],["1935","Stakhanovisme"],["1936","Constitution « démocratique » de façade"]],
+notions:[["Plan quinquennal","Programme économique sur cinq ans fixé par l'État."],["Collectivisation","Mise en commun forcée des terres et du bétail."],["Kolkhoze","Coopérative agricole collective."],["Sovkhoze","Ferme d'État dont les paysans sont salariés."],["Koulak","Paysan aisé, désigné comme ennemi de classe."],["Goulag","Administration des camps de travail forcé en URSS."],["Stakhanovisme","Mouvement d'émulation qui pousse les ouvriers à dépasser les normes."],["Réalisme socialiste","Art officiel qui doit glorifier le régime et le travail."]],
+acteurs:[["Joseph Staline","Secrétaire général du PC, maître de l'URSS (1924-1953)"],["Léon Trotski","Rival de Staline, assassiné en 1940"],["Alexeï Stakhanov","Mineur érigé en modèle par la propagande"]],
+piege:"Les kolkhozes sont des coopératives, les sovkhozes des fermes d'État. Ne pas les inverser.",
+q:[
+["t","Qui succède à Lénine à la tête de l'URSS ?",["Staline","joseph staline"],"Staline, secrétaire général du Parti depuis 1922."],
+["q","En quelle année Lénine meurt-il ?",["1917","1922","1924","1929"],2,"Janvier 1924 : début de la lutte pour sa succession."],
+["t","Quel rival de Staline est assassiné au Mexique en 1940 ?",["Trotski","trotsky","leon trotski"],"Léon Trotski, expulsé d'URSS en 1929."],
+["q","Qu'est-ce qu'un kolkhoze ?",["Un camp de travail","Une coopérative agricole collective","Une ferme d'État","Une usine"],1,"Le sovkhoze, lui, est une ferme d'État."],
+["t","Comment s'appelle l'administration des camps de travail forcé en URSS ?",["Goulag","gulag"],"Le Goulag, créé en 1930."],
+["t","Quel nom donne-t-on à la famine de 1932-1933 en Ukraine ?",["Holodomor"],"Holodomor : environ 4 millions de morts en Ukraine."],
+["q","Que désigne le stakhanovisme ?",["Une police politique","Un mouvement pour dépasser les normes de production","Une réforme agraire","Un style de peinture"],1,"Du nom du mineur Stakhanov (1935)."],
+["t","En quelle année est lancé le premier plan quinquennal ?",["1928"],"1928 : priorité à l'industrie lourde."],
+["t","Comment s'appelle la police politique soviétique à partir de 1934 ?",["NKVD"],"Le NKVD, maître d'œuvre de la Grande Terreur."],
+["v","Les koulaks sont des ouvriers d'usine désignés comme modèles par le régime.",false,"Faux : ce sont des paysans aisés, désignés comme ennemis de classe et déportés."],
+["t","Comment s'appelle l'art officiel soviétique ?",["réalisme socialiste"],"Le réalisme socialiste glorifie le travail, le Parti et Staline."],
+["o","Classe ces événements dans l'ordre chronologique.",["Mort de Lénine","Premier plan quinquennal","Création du Goulag","Famine en Ukraine","Assassinat de Kirov"],"1924 → 1928 → 1930 → 1932-1933 → décembre 1934."]]},
+
+{id:"terreur",ppo:"Point de passage : 1937-1938, la Grande Terreur en URSS",t:"1937-1938 : la Grande Terreur en URSS",
+intro:"En seize mois, le régime stalinien arrête environ 1,5 million de personnes et en exécute près de 700 000. C'est le sommet de la terreur de masse, organisée d'en haut avec des quotas.",
+sec:[["Une terreur planifiée",["Période : <b>août 1937 - novembre 1938</b>. Le NKVD est dirigé par <b>Nikolaï Iejov</b> (on parle de « iejovchtchina »).","<b>Ordre opérationnel n° 00447</b> du NKVD (30 juillet 1937) : fixe des <b>quotas</b> régionaux d'arrestations. Catégorie 1 : exécution ; catégorie 2 : camp.","Des « troïkas » (tribunaux de trois membres) jugent en quelques minutes, sans avocat.","Opérations « nationales » contre les minorités (Polonais, Allemands…)."]],
+["Des victimes de tous les milieux",["Les <b>procès de Moscou</b> (1936-1938) : anciens dirigeants bolcheviks (Zinoviev, Kamenev, Boukharine) avouent des crimes imaginaires et sont exécutés.","<b>Purge de l'Armée rouge</b> (1937) : le maréchal Toukhatchevski est fusillé ; trois maréchaux sur cinq sont éliminés.","Mais la majorité des victimes sont des gens ordinaires : anciens koulaks, croyants, ouvriers dénoncés, « ennemis du peuple ».","Bilan : environ 1,5 million d'arrestations et 680 000 à 750 000 exécutions. Le Goulag compte près de 2 millions de détenus à la fin des années 1930."]],
+["Objectifs et suites",["Éliminer toute opposition réelle ou imaginaire avant une guerre jugée inévitable, et terroriser la société.","Fin 1938, Iejov est remplacé par <b>Beria</b> puis exécuté (1940).","La Grande Terreur est cachée ; Khrouchtchev la dénonce partiellement dans son rapport secret de 1956."]]],
+dates:[["1936-1938","Procès de Moscou"],["juin 1937","Exécution du maréchal Toukhatchevski"],["30 juil. 1937","Ordre opérationnel n° 00447"],["août 1937-nov. 1938","Grande Terreur"],["1956","Rapport Khrouchtchev"]],
+notions:[["Grande Terreur","Vague de répression de masse en URSS en 1937-1938."],["Purge","Élimination des membres jugés indésirables d'un parti, d'une administration ou de l'armée."],["Ennemi du peuple","Accusation qui permet d'arrêter quiconque est suspect aux yeux du régime."],["Troïka","Tribunal expéditif de trois membres."]],
+acteurs:[["Nikolaï Iejov","Chef du NKVD pendant la Grande Terreur"],["Lavrenti Beria","Successeur de Iejov fin 1938"],["Toukhatchevski","Maréchal fusillé en 1937"],["Boukharine","Dirigeant bolchevik exécuté en 1938"]],
+piege:"La Grande Terreur ne vise pas seulement les élites (procès de Moscou) : la grande majorité des victimes sont des citoyens ordinaires.",
+q:[
+["q","Quand se déroule la Grande Terreur ?",["1924-1925","1929-1930","1937-1938","1941-1942"],2,"Août 1937 - novembre 1938."],
+["t","Qui dirige le NKVD pendant la Grande Terreur ?",["Iejov","nikolai iejov","yezhov","ejov"],"Nikolaï Iejov, remplacé par Beria fin 1938 puis exécuté."],
+["q","Que fixe l'ordre opérationnel n° 00447 ?",["Des quotas d'arrestations et d'exécutions par région","La fin du Goulag","Les objectifs du plan quinquennal","L'alliance avec l'Allemagne"],0,"Les quotas montrent que la terreur est planifiée d'en haut."],
+["q","Combien de personnes environ sont exécutées pendant la Grande Terreur ?",["Environ 7 000","Environ 70 000","Environ 700 000","Environ 7 millions"],2,"Entre 680 000 et 750 000 exécutions, pour environ 1,5 million d'arrestations."],
+["t","Comment appelle-t-on les procès truqués d'anciens dirigeants bolcheviks entre 1936 et 1938 ?",["procès de Moscou","proces de moscou"],"Les procès de Moscou : aveux extorqués, condamnations à mort."],
+["t","Quel maréchal de l'Armée rouge est fusillé en 1937 ?",["Toukhatchevski","tukhachevsky","toukhatchevsky"],"Toukhatchevski : la purge affaiblit l'armée juste avant la guerre."],
+["v","La plupart des victimes de la Grande Terreur sont de hauts dirigeants du Parti.",false,"Faux : la grande majorité sont des citoyens ordinaires."],
+["t","Comment appelle-t-on les tribunaux expéditifs de trois membres ?",["troïkas","troika","troikas"],"Les troïkas jugent en quelques minutes, sans défense."],
+["t","Qui remplace Iejov à la tête du NKVD fin 1938 ?",["Beria","lavrenti beria"],"Lavrenti Beria."],
+["v","Khrouchtchev dénonce une partie des crimes de Staline dans un rapport secret en 1956.",true,"Vrai : au XXe congrès du Parti communiste."]]},
+
+{id:"italie",t:"L'Italie fasciste de Mussolini",
+intro:"Premier régime fasciste, l'Italie de Mussolini s'installe au pouvoir par la violence et la légalité, puis construit un État qui se veut totalitaire, tout en composant avec le roi et l'Église.",
+sec:[["La conquête du pouvoir",["Contexte : déception de la « victoire mutilée » de 1919, crise économique, grèves et occupations d'usines (« biennio rosso », 1919-1920).","<b>Benito Mussolini</b>, ancien socialiste, fonde les Faisceaux de combat (mars 1919), puis le Parti national fasciste (1921). Ses milices, les <b>chemises noires</b> (squadristi), attaquent socialistes et syndicats.","<b>Marche sur Rome (28 octobre 1922)</b> : le roi <b>Victor-Emmanuel III</b> nomme Mussolini président du Conseil (30 octobre)."]],
+["La dictature totalitaire",["Juin 1924 : assassinat du député socialiste <b>Giacomo Matteotti</b>. En janvier 1925, Mussolini assume la responsabilité politique.","<b>Lois fascistissimes</b> (1925-1926) : parti unique, fin des libertés, presse muselée. Police politique <b>OVRA</b>, tribunal spécial, relégation (confino).","Culte du <b>Duce</b> ; slogan : « Croire, obéir, combattre ». Formule : « Tout dans l'État, rien hors de l'État, rien contre l'État ».","Encadrement : jeunesse (Opera Balilla), loisirs (Dopolavoro), propagande par la radio et le cinéma.","Économie : <b>corporatisme</b> (Charte du travail, 1927), « bataille du blé », autarcie."]],
+["Limites et expansion",["<b>Accords du Latran (1929)</b> avec le pape Pie XI : création de l'État du Vatican, catholicisme religion d'État. L'Église et le roi conservent une autonomie.","Impérialisme : invasion de l'<b>Éthiopie</b> (1935-1936), avec usage de gaz ; sanctions de la SDN.","Rapprochement avec Hitler : <b>axe Rome-Berlin</b> (1936), lois raciales antisémites (1938), Pacte d'Acier (1939)."]]],
+dates:[["mars 1919","Faisceaux de combat"],["28 oct. 1922","Marche sur Rome"],["juin 1924","Assassinat de Matteotti"],["1925-1926","Lois fascistissimes"],["1929","Accords du Latran"],["1935-1936","Conquête de l'Éthiopie"],["1938","Lois raciales"]],
+notions:[["Fascisme","Idéologie nationaliste, antidémocratique et anticommuniste fondée sur le culte du chef et de l'État."],["Duce","« Guide » : titre de Mussolini."],["Corporatisme","Organisation de l'économie par branches réunissant patrons et ouvriers sous le contrôle de l'État, sans lutte des classes."],["Chemises noires","Milices fascistes (squadristi)."]],
+acteurs:[["Benito Mussolini","Duce, chef du gouvernement (1922-1943)"],["Victor-Emmanuel III","Roi d'Italie"],["Giacomo Matteotti","Député socialiste assassiné en 1924"],["Pie XI","Pape signataire des accords du Latran"]],
+piege:"Mussolini n'arrive pas au pouvoir par un coup d'État : c'est le roi qui le nomme, sous la pression de la marche sur Rome.",
+q:[
+["t","Comment s'appelle le chef fasciste italien ?",["Mussolini","benito mussolini"],"Benito Mussolini, surnommé le Duce."],
+["q","Quel événement d'octobre 1922 permet à Mussolini d'accéder au pouvoir ?",["L'incendie du Reichstag","La marche sur Rome","La nuit des longs couteaux","Les accords du Latran"],1,"28 octobre 1922 : le roi nomme Mussolini président du Conseil."],
+["t","Quel député socialiste est assassiné en 1924 ?",["Matteotti","giacomo matteotti"],"Giacomo Matteotti : sa mort ouvre la voie à la dictature."],
+["t","Comment s'appelle la police politique fasciste ?",["OVRA"],"L'OVRA, créée en 1927."],
+["q","Que créent les accords du Latran de 1929 ?",["L'axe Rome-Berlin","L'État du Vatican","Le Parti fasciste","Les corporations"],1,"Signés avec le pape Pie XI : réconciliation avec l'Église."],
+["t","Quel pays l'Italie envahit-elle en 1935 ?",["Éthiopie","abyssinie","ethiopie"],"L'Éthiopie (Abyssinie), conquise en 1936. La SDN vote des sanctions."],
+["v","Le roi Victor-Emmanuel III est renversé par Mussolini en 1922.",false,"Faux : il reste roi et c'est lui qui nomme Mussolini. La monarchie limite le totalitarisme italien."],
+["q","Quel slogan est associé au fascisme italien ?",["« Un peuple, un Reich, un Führer »","« Croire, obéir, combattre »","« Prolétaires de tous les pays, unissez-vous »","« Liberté, égalité, fraternité »"],1,"« Croire, obéir, combattre ». Le premier slogan est nazi."],
+["t","Comment appelle-t-on l'organisation de l'économie par branches réunissant patrons et ouvriers sous contrôle de l'État ?",["corporatisme"],"Le corporatisme, censé remplacer la lutte des classes."],
+["t","Comment s'appellent les lois de 1925-1926 qui installent la dictature ?",["lois fascistissimes","fascistissimes"],"Les lois fascistissimes : parti unique, fin des libertés."],
+["v","L'Italie fasciste adopte des lois antisémites en 1938.",true,"Vrai : lois raciales de 1938, sous l'influence du rapprochement avec l'Allemagne."]]},
+
+{id:"nazisme",t:"L'Allemagne nazie",
+intro:"Arrivé légalement au pouvoir en janvier 1933, Hitler détruit la démocratie en dix-huit mois. Le régime nazi repose sur une idéologie raciste et prépare dès le départ la guerre de conquête.",
+sec:[["De Weimar au pouvoir",["La république de Weimar est fragilisée par la défaite, le traité de Versailles (vécu comme un « diktat ») et les crises.","Hitler dirige le <b>NSDAP</b> ; putsch raté de Munich (1923) ; il écrit <b><i>Mein Kampf</i></b> en prison (1925). Milice : les SA.","Avec la crise, le parti nazi passe de 2,6 % (1928) à 37,3 % des voix (juillet 1932).","<b>30 janvier 1933</b> : le président <b>Hindenburg</b> nomme Hitler chancelier, de façon légale."]],
+["La mise en place de la dictature",["<b>27 février 1933</b> : incendie du Reichstag, attribué aux communistes ; libertés suspendues.","Mars 1933 : ouverture du camp de <b>Dachau</b> ; <b>23 mars</b> : loi des <b>pleins pouvoirs</b>.","Syndicats dissous (mai 1933), autodafés de livres (10 mai 1933), <b>parti unique (14 juillet 1933)</b> : c'est la mise au pas (Gleichschaltung).","<b>30 juin 1934</b> : <b>nuit des longs couteaux</b>, les SS éliminent les chefs SA (Röhm).","<b>2 août 1934</b> : mort de Hindenburg ; Hitler devient <b>Führer</b> et chancelier."]],
+["Idéologie, terreur et propagande",["Idéologie : racisme et <b>antisémitisme</b>, supériorité de la « race aryenne », <b>communauté du peuple</b> (Volksgemeinschaft), <b>espace vital</b> (Lebensraum) à l'Est, culte du chef.","Terreur : <b>SS</b> (Himmler), <b>Gestapo</b> (police secrète), camps de concentration pour opposants, Témoins de Jéhovah, homosexuels, Tsiganes, Juifs.","Propagande : <b>Goebbels</b>, radio, cinéma (Leni Riefenstahl), congrès de Nuremberg, JO de Berlin (1936). <b>Jeunesses hitlériennes</b>.","Persécution des Juifs : boycott (1er avril 1933), exclusion de la fonction publique, <b>lois de Nuremberg (15 septembre 1935)</b> qui leur retirent la citoyenneté et interdisent les mariages mixtes, puis nuit de Cristal (1938). Stérilisations forcées (1933)."]],
+["Économie et expansion",["Grands travaux, puis <b>réarmement</b> et plan de quatre ans (1936, Göring) pour l'autarcie.","Sortie de la SDN (1933), service militaire (1935), remilitarisation de la Rhénanie (1936), <b>Anschluss</b> de l'Autriche (mars 1938), accords de <b>Munich</b> et annexion des Sudètes (septembre 1938), <b>pacte germano-soviétique</b> (23 août 1939)."]]],
+dates:[["1925","Mein Kampf"],["30 janv. 1933","Hitler chancelier"],["27 févr. 1933","Incendie du Reichstag"],["mars 1933","Camp de Dachau, loi des pleins pouvoirs (23 mars)"],["14 juil. 1933","NSDAP parti unique"],["30 juin 1934","Nuit des longs couteaux"],["2 août 1934","Hitler Führer"],["15 sept. 1935","Lois de Nuremberg"],["7 mars 1936","Remilitarisation de la Rhénanie"],["mars 1938","Anschluss"],["sept. 1938","Accords de Munich"],["23 août 1939","Pacte germano-soviétique"]],
+notions:[["Antisémitisme","Hostilité envers les Juifs."],["Lebensraum","« Espace vital » que l'Allemagne veut conquérir à l'Est."],["Volksgemeinschaft","« Communauté du peuple » réservée aux « Aryens »."],["Führer","« Guide » : titre de Hitler."],["Gestapo","Police secrète d'État du régime nazi."],["SS","Garde du parti devenue l'instrument de la terreur, dirigée par Himmler."],["Anschluss","Annexion de l'Autriche par l'Allemagne en mars 1938."]],
+acteurs:[["Adolf Hitler","Führer et chancelier du Reich"],["Paul von Hindenburg","Président de la République qui nomme Hitler"],["Joseph Goebbels","Ministre de la Propagande"],["Heinrich Himmler","Chef des SS et de la police"],["Ernst Röhm","Chef des SA, tué en 1934"]],
+piege:"Hitler arrive au pouvoir légalement (nommé chancelier), mais il n'a jamais obtenu la majorité absolue des voix lors d'élections libres.",
+q:[
+["q","Quand Hitler est-il nommé chancelier ?",["30 janvier 1933","27 février 1933","2 août 1934","9 novembre 1938"],0,"Il est nommé par le président Hindenburg, de façon légale."],
+["t","Quel président de la République nomme Hitler chancelier ?",["Hindenburg","paul von hindenburg"],"Le maréchal Hindenburg, dont la mort en août 1934 permet à Hitler de devenir Führer."],
+["t","Quel événement du 27 février 1933 sert de prétexte à la répression des communistes ?",["incendie du Reichstag","l incendie du reichstag","reichstag"],"L'incendie du Reichstag ; un décret suspend dès le lendemain les libertés."],
+["t","Comment s'appelle le premier camp de concentration, ouvert en mars 1933 ?",["Dachau"],"Dachau, près de Munich, d'abord pour les opposants politiques."],
+["q","Que se passe-t-il le 30 juin 1934 ?",["La nuit de Cristal","La nuit des longs couteaux","L'incendie du Reichstag","L'Anschluss"],1,"Les SS éliminent les chefs des SA, dont Ernst Röhm."],
+["t","Quelles lois de septembre 1935 retirent la citoyenneté aux Juifs allemands ?",["lois de Nuremberg","nuremberg"],"Les lois de Nuremberg (15 septembre 1935)."],
+["t","Qui est le ministre de la Propagande nazi ?",["Goebbels","joseph goebbels"],"Joseph Goebbels, qui contrôle presse, radio, cinéma et culture."],
+["t","Qui dirige les SS ?",["Himmler","heinrich himmler"],"Heinrich Himmler, chef des SS et de toute la police."],
+["t","Quel mot allemand désigne l'« espace vital » à conquérir à l'Est ?",["Lebensraum"],"Le Lebensraum, au cœur du projet de guerre nazi."],
+["q","Comment s'appelle la police secrète d'État nazie ?",["NKVD","OVRA","Gestapo","SA"],2,"La Gestapo. Le NKVD est soviétique, l'OVRA italienne."],
+["v","Le parti nazi a obtenu plus de 50 % des voix lors d'élections libres.",false,"Faux : son meilleur score libre est 37,3 % (juillet 1932)."],
+["t","Comment appelle-t-on l'annexion de l'Autriche en mars 1938 ?",["Anschluss"],"L'Anschluss (12-13 mars 1938)."],
+["q","Quel livre Hitler écrit-il en prison ?",["Le Capital","Mein Kampf","Le Prince","Les Origines du totalitarisme"],1,"Mein Kampf (« Mon combat »), paru en 1925."],
+["o","Classe ces étapes de la mise en place de la dictature nazie.",["Hitler chancelier","Incendie du Reichstag","Loi des pleins pouvoirs","NSDAP parti unique","Nuit des longs couteaux","Hitler devient Führer"],"Janvier 1933 → février 1933 → mars 1933 → juillet 1933 → juin 1934 → août 1934."],
+["t","Quelle organisation encadre la jeunesse allemande ?",["Jeunesses hitlériennes","hitlerjugend","jeunesse hitlerienne"],"Les Jeunesses hitlériennes (Hitlerjugend), obligatoires à partir de 1936-1939."]]},
+
+{id:"cristal",ppo:"Point de passage : 9-10 novembre 1938, la nuit de Cristal",t:"9-10 novembre 1938 : la nuit de Cristal",
+intro:"Le pogrom de novembre 1938 marque un tournant : la persécution des Juifs allemands passe des lois à la violence physique de masse, organisée par le régime.",
+sec:[["Le prétexte",["Fin octobre 1938, l'Allemagne expulse brutalement vers la Pologne environ 17 000 Juifs polonais.","<b>7 novembre 1938</b> : à Paris, <b>Herschel Grynszpan</b>, jeune Juif de 17 ans dont les parents ont été expulsés, tire sur le diplomate allemand <b>Ernst vom Rath</b>, qui meurt le 9 novembre."]],
+["Un pogrom organisé",["Le 9 novembre au soir, à Munich, <b>Goebbels</b>, avec l'accord de Hitler, lance les violences en les présentant comme une « colère spontanée du peuple ».","SA, SS et membres du parti incendient des centaines de synagogues (plus d'un millier selon les estimations récentes), saccagent environ <b>7 500 commerces</b> juifs, des maisons et des cimetières.","Au moins <b>91 Juifs tués</b> (bien plus en comptant les suicides et les morts en camp) ; environ <b>30 000 hommes juifs</b> envoyés à Dachau, Buchenwald et Sachsenhausen.","Le nom « nuit de Cristal » vient des éclats de verre des vitrines ; les historiens parlent aussi de « pogrom de novembre »."]],
+["Conséquences",["Les Juifs doivent payer une <b>« amende » d'un milliard de Reichsmarks</b> ; les indemnités d'assurance sont confisquées.","Exclusion totale de la vie économique (aryanisation), interdiction des écoles et des lieux publics.","Accélération de l'émigration (Kindertransport d'enfants vers le Royaume-Uni), alors que la conférence d'Évian (juillet 1938) a montré que peu de pays acceptent d'accueillir les réfugiés.","Condamnations internationales (les États-Unis rappellent leur ambassadeur), mais aucune action. C'est une étape de la radicalisation, pas encore le génocide (Shoah, à partir de 1941)."]]],
+dates:[["juil. 1938","Conférence d'Évian sur les réfugiés"],["7 nov. 1938","Grynszpan tire sur vom Rath à Paris"],["9-10 nov. 1938","Nuit de Cristal"],["12 nov. 1938","Amende d'un milliard de Reichsmarks"]],
+notions:[["Pogrom","Attaque violente et meurtrière contre une communauté juive."],["Aryanisation","Spoliation des biens juifs au profit des « Aryens »."],["Synagogue","Lieu de culte juif."]],
+acteurs:[["Herschel Grynszpan","Jeune Juif qui tire sur vom Rath"],["Ernst vom Rath","Diplomate allemand tué à Paris"],["Joseph Goebbels","Organisateur du pogrom"]],
+piege:"La nuit de Cristal n'est pas spontanée : elle est organisée par le parti nazi, même si la propagande la présente comme une colère populaire.",
+q:[
+["q","Quelles sont les dates de la nuit de Cristal ?",["9-10 novembre 1938","30 juin 1934","15 septembre 1935","27 février 1933"],0,"Dans la nuit du 9 au 10 novembre 1938."],
+["t","Quel dirigeant nazi déclenche le pogrom ?",["Goebbels","joseph goebbels"],"Goebbels, avec l'accord de Hitler."],
+["t","Quel diplomate allemand est tué à Paris, servant de prétexte ?",["vom Rath","ernst vom rath"],"Ernst vom Rath, mort le 9 novembre 1938."],
+["t","Comment s'appelle le jeune homme qui tire sur le diplomate ?",["Grynszpan","herschel grynszpan"],"Herschel Grynszpan, 17 ans, dont les parents venaient d'être expulsés."],
+["q","Combien d'hommes juifs sont envoyés en camp de concentration ?",["Environ 300","Environ 3 000","Environ 30 000","Environ 300 000"],2,"Environ 30 000, à Dachau, Buchenwald et Sachsenhausen."],
+["v","La nuit de Cristal est un mouvement populaire spontané.",false,"Faux : elle est organisée par le parti nazi (SA, SS)."],
+["q","Quelle sanction est imposée aux Juifs allemands après le pogrom ?",["Une amende d'un milliard de Reichsmarks","Le service militaire","Le droit de vote retiré","L'interdiction de quitter l'Allemagne"],0,"On leur fait payer les dégâts qu'ils ont subis."],
+["t","Comment appelle-t-on une attaque violente contre une communauté juive ?",["pogrom"],"Un pogrom. Les historiens parlent du « pogrom de novembre »."],
+["v","La nuit de Cristal marque le début du génocide des Juifs.",false,"Faux : c'est une étape de radicalisation. Le génocide (Shoah) commence en 1941."],
+["q","D'où vient l'expression « nuit de Cristal » ?",["D'un lieu à Berlin","Des éclats de verre des vitrines brisées","D'une opération militaire","D'un film de propagande"],1,"Des débris de verre qui couvrent les rues."]]},
+
+{id:"ordre",t:"Les totalitarismes contre l'ordre international",
+intro:"Les régimes fasciste et nazi veulent détruire l'ordre de 1919 par la force. La guerre d'Espagne est leur laboratoire, face à des démocraties qui reculent.",
+sec:[["La remise en cause de l'ordre de 1919",["Les dictatures quittent ou défient la SDN : Allemagne (1933), Italie (Éthiopie 1935-1936).","Allemagne : réarmement, remilitarisation de la Rhénanie (mars 1936), Anschluss (mars 1938), Sudètes après les <b>accords de Munich</b> (29-30 septembre 1938) où la France et le Royaume-Uni cèdent (politique d'apaisement).","<b>Axe Rome-Berlin</b> (1936), <b>pacte anti-Komintern</b> avec le Japon (1936), Pacte d'Acier (1939).","<b>23 août 1939</b> : pacte germano-soviétique entre Hitler et Staline ; le 1er septembre, l'Allemagne envahit la Pologne."]],
+["La guerre d'Espagne (1936-1939)",["Février 1936 : victoire du Front populaire espagnol. <b>17-18 juillet 1936</b> : soulèvement militaire du général <b>Franco</b>.","Les nationalistes sont aidés par l'Allemagne (<b>légion Condor</b>) et l'Italie (des dizaines de milliers de soldats).","Les républicains reçoivent l'aide de l'URSS (armes, conseillers) et des <b>Brigades internationales</b> (environ 35 000 volontaires).","La France de Blum et le Royaume-Uni choisissent la <b>non-intervention</b>.","<b>26 avril 1937</b> : bombardement de <b>Guernica</b> par la légion Condor, immortalisé par Picasso.","Victoire de Franco en avril 1939, qui instaure une dictature."]]],
+dates:[["oct. 1933","L'Allemagne quitte la SDN"],["1936","Axe Rome-Berlin, pacte anti-Komintern"],["juil. 1936","Début de la guerre d'Espagne"],["26 avr. 1937","Bombardement de Guernica"],["29-30 sept. 1938","Accords de Munich"],["avr. 1939","Victoire de Franco"],["23 août 1939","Pacte germano-soviétique"]],
+notions:[["Apaisement","Politique de concessions des démocraties face à Hitler pour éviter la guerre."],["Non-intervention","Refus de la France et du Royaume-Uni d'intervenir dans la guerre d'Espagne."],["Brigades internationales","Volontaires étrangers venus combattre pour la République espagnole."],["Axe","Alliance entre l'Allemagne et l'Italie (puis le Japon)."]],
+acteurs:[["Francisco Franco","Général nationaliste, dictateur de l'Espagne"],["Pablo Picasso","Peintre de Guernica (1937)"]],
+piege:"Le pacte germano-soviétique (1939) unit deux régimes aux idéologies opposées : c'est une alliance de circonstance, pas idéologique.",
+q:[
+["t","Quel général dirige le soulèvement nationaliste en Espagne en 1936 ?",["Franco","francisco franco"],"Francisco Franco, vainqueur en 1939."],
+["t","Quelle ville basque est bombardée le 26 avril 1937 ?",["Guernica","gernika"],"Guernica, bombardée par la légion Condor allemande."],
+["q","Quelle unité allemande intervient en Espagne ?",["La légion Condor","Les Brigades internationales","La Gestapo","Les chemises noires"],0,"La légion Condor, aviation allemande au service de Franco."],
+["q","Quelle politique choisissent la France et le Royaume-Uni face à la guerre d'Espagne ?",["L'intervention militaire","La non-intervention","L'alliance avec Franco","L'embargo contre l'URSS"],1,"La non-intervention, malgré l'aide germano-italienne à Franco."],
+["v","L'URSS soutient les républicains espagnols.",true,"Vrai : armes et conseillers, et le Komintern recrute les Brigades internationales."],
+["t","Quand est signé le pacte germano-soviétique ? (jour mois année)",["23 août 1939","23 aout 1939","23/08/1939","23 08 1939"],"Le 23 août 1939, une semaine avant l'invasion de la Pologne."],
+["q","Que décident les accords de Munich (septembre 1938) ?",["L'annexion des Sudètes par l'Allemagne","L'Anschluss","La fin de la guerre d'Espagne","Le partage de la Pologne"],0,"La France et le Royaume-Uni cèdent : c'est la politique d'apaisement."],
+["t","Comment appelle-t-on la politique de concessions des démocraties face à Hitler ?",["apaisement","appeasement","politique d apaisement"],"L'apaisement (appeasement), qui culmine à Munich."],
+["o","Classe ces événements dans l'ordre chronologique.",["L'Allemagne quitte la SDN","Remilitarisation de la Rhénanie","Bombardement de Guernica","Anschluss","Accords de Munich","Pacte germano-soviétique"],"1933 → mars 1936 → avril 1937 → mars 1938 → septembre 1938 → août 1939."]]}
+]}];
+
+/* ================ OUTILS ================ */
+const $=s=>document.querySelector(s), app=$("#app");
+const TH=[];CH.forEach(c=>c.themes.forEach(t=>{t.ch=c;TH.push(t)}));
+const byId=id=>TH.find(t=>t.id===id);
+const store={get(k,d){try{const v=localStorage.getItem("hist-"+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem("hist-"+k,JSON.stringify(v))}catch(e){}}};
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const norm=s=>" "+String(s).normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/œ/g,"oe").replace(/[’'`\-\/.,;:!?«»"()]/g," ").replace(/[^a-z0-9 ]/g," ")+" ";
+const clean=s=>norm(s).replace(/ (le|la|les|l|un|une|des|du|de|d|the) /g," ").replace(/ (le|la|les|l|un|une|des|du|de|d|the) /g," ").replace(/\s+/g," ").trim();
+const lev=(a,b)=>{const m=[];for(let i=0;i<=a.length;i++){m[i]=[i];for(let j=1;j<=b.length;j++)m[i][j]=i?Math.min(m[i-1][j]+1,m[i][j-1]+1,m[i-1][j-1]+(a[i-1]===b[j-1]?0:1)):j}return m[a.length][b.length]};
+const tol=w=>/\d/.test(w)?0:w.length>=9?2:w.length>=5?1:0;
+const close=(a,b)=>a===b||lev(a,b)<=tol(b);
+function match(input,acc){const n=clean(input);if(!n)return false;const nt=n.split(" ");
+ return acc.some(a=>{const c=clean(a);if(close(n,c))return true;const ct=c.split(" ");
+  return nt.length<=ct.length+3&&ct.every(w=>nt.some(x=>close(x,w)))})}
+const QTYPE={q:"QCM",t:"Réponse écrite",v:"Vrai ou faux",o:"Chronologie"};
+const correctText=q=>q[0]==="q"?q[2][q[3]]:q[0]==="t"?q[2][0]:q[0]==="v"?(q[2]?"Vrai":"Faux"):q[2].join(" → ");
+
+/* ================ PAGES ================ */
+const FRISE=[[1929.8,"24 oct. 1929","Jeudi noir","causes",1],[1930.45,"juin 1930","Loi Hawley-Smoot","mondiale",0],[1930.7,"1930","Coups d'État en Amérique latine","amlat",1],[1931.4,"mai 1931","Faillite du Kredit-Anstalt","mondiale",0],[1933.08,"30 janv. 1933","Hitler chancelier","nazisme",1],[1933.2,"4 mars 1933","Roosevelt, New Deal","reponses",0],[1934.1,"6 févr. 1934","Émeute des ligues","chomage",1],[1935.7,"sept. 1935","Lois de Nuremberg","nazisme",0],[1936.45,"juin 1936","Accords Matignon","reponses",1],[1936.55,"juil. 1936","Guerre d'Espagne","ordre",0],[1937.6,"1937-1938","Grande Terreur","terreur",1],[1938.86,"9-10 nov. 1938","Nuit de Cristal","cristal",0],[1939.64,"23 août 1939","Pacte germano-soviétique","ordre",1]];
+const pct=y=>(2+(y-1929)/(1940-1929)*94).toFixed(2);
+function bestTag(id){const b=store.get("best-"+id,null);return b==null?'<span class="best">pas encore fait</span>':'<span class="best'+(b>=80?" g":"")+'">record '+b+' %</span>'}
+function home(){
+ const yrs=[...Array(12)].map((_,i)=>1929+i).map(y=>`<span class="yr" style="left:${pct(y)}%">${y}</span>`).join("");
+ const evs=FRISE.map((e,k)=>`<a class="ev l${k%4}" href="#f-${e[3]}" style="left:calc(${pct(e[0])}% - ${e[0]>1938.5?132:0}px)"><b>${e[1]}</b>${e[2]}</a>`).join("");
+ const evals=store.get("evals",[]);
+ app.innerHTML=`<h1>Crise de 1929 et régimes totalitaires</h1>
+ <p class="lead">Thème 1 du programme de Terminale : « Fragilités des démocraties, totalitarismes et Seconde Guerre mondiale ». Fiches de cours, quiz par thème et évaluation finale. Clique sur un événement pour ouvrir sa fiche.</p>
+ <div class="frise"><div class="track"><div class="axis"></div>${yrs}${evs}</div></div>
+ <p class="small">Fais glisser la frise sur téléphone.</p>
+ <div class="cols">${CH.map(c=>`<section class="card"><span class="tag">${c.n}</span><h2 style="margin-top:8px">${c.t}</h2><p class="small">${c.pb}</p>
+  ${c.themes.map(t=>`<div class="row"><a href="#f-${t.id}">${t.t}</a>${bestTag(t.id)}</div>`).join("")}
+  <div class="btns"><a class="btn" href="#q-${c.id}">Quiz du chapitre</a></div></section>`).join("")}
+ <section class="card"><span class="tag">Bac blanc</span><h2 style="margin-top:8px">Mode évaluation</h2><p>Toutes les questions des deux chapitres mélangées, sans correction pendant l'épreuve, note sur 20 et bilan de tes points faibles à la fin.</p>
+ ${evals.length?`<p class="small">Dernières notes : ${evals.slice(-5).map(e=>e.toFixed(1).replace(".",",")).join(" · ")} /20</p>`:""}
+ <div class="btns"><a class="btn" href="#evaluation">Lancer une évaluation</a><a class="btn ghost" href="#reperes">Dates et notions</a></div></section></div>`}
+
+function fichesList(){app.innerHTML=`<h1>Fiches de cours</h1><p class="lead">Une fiche par thème, conforme au programme officiel. Les points de passage et d'ouverture (PPO) sont signalés : ce sont les études précises qui peuvent tomber au bac.</p>
+ <div class="cols">${CH.map(c=>`<section class="card"><span class="tag">${c.n}</span><h2 style="margin-top:8px">${c.t}</h2>${c.themes.map(t=>`<div class="row"><a href="#f-${t.id}">${t.t}</a>${t.ppo?'<span class="tag">PPO</span>':""}</div>`).join("")}</section>`).join("")}</div>`}
+
+function fiche(t){const i=TH.indexOf(t),prev=TH[i-1],next=TH[i+1];
+ app.innerHTML=`<p class="small"><a href="#fiches">Fiches</a> · ${t.ch.n} · ${t.ch.t}</p>
+ ${t.ppo?`<span class="ppo">${t.ppo}</span>`:""}<h1>${t.t}</h1><p class="lead">${t.intro}</p>
+ <div class="fiche"><div>${t.sec.map(s=>`<h3>${s[0]}</h3><ul>${s[1].map(l=>`<li>${l}</li>`).join("")}</ul>`).join("")}
+ <div class="piege"><b>Piège à éviter.</b> ${t.piege}</div>
+ <div class="btns"><a class="btn" href="#q-${t.id}">Faire le quiz de ce thème (${t.q.length} questions)</a></div></div>
+ <aside><h3 style="margin-top:0">Dates clés</h3><dl class="kv">${t.dates.map(d=>`<dt>${d[0]}</dt><dd>${d[1]}</dd>`).join("")}</dl>
+ <h3>Notions</h3><dl class="kv" style="grid-template-columns:1fr">${t.notions.map(n=>`<dd><b>${n[0]}</b> : ${n[1]}</dd>`).join("")}</dl>
+ <h3>Acteurs</h3><dl class="kv" style="grid-template-columns:1fr">${t.acteurs.map(a=>`<dd><b>${a[0]}</b> : ${a[1]}</dd>`).join("")}</dl></aside></div>
+ <div class="btns" style="margin-top:34px;border-top:1px solid var(--line);padding-top:16px">${prev?`<a class="btn ghost" href="#f-${prev.id}">← ${prev.t}</a>`:""}${next?`<a class="btn ghost" href="#f-${next.id}">${next.t} →</a>`:""}</div>`;scrollTo(0,0)}
+
+function flashcards(){
+ const cards=TH.flatMap(t=>t.notions.map(n=>({term:n[0],definition:n[1],theme:t.t})));
+ let deck=shuf(cards), i=0, revealed=false;
+ function draw(){const c=deck[i];app.innerHTML=`<h1>Flashcards</h1><p class="lead">Teste ta mémoire sur les notions des deux chapitres. Retourne chaque carte pour découvrir sa définition.</p><div class="qbox"><p class="small">Carte ${i+1} / ${deck.length} · ${esc(c.theme)}</p><button class="opt" id="flip" style="width:100%;min-height:180px;text-align:center"><span class="k">${revealed?"DÉFINITION":"NOTION · CLIQUE POUR RETOURNER"}</span><p class="qt">${esc(revealed?c.definition:c.term)}</p></button><div class="btns"><button class="btn ghost" id="prev">← Précédente</button><button class="btn" id="next">Suivante →</button><button class="btn ghost" id="mix">Mélanger</button></div></div>`;
+ $('#flip').onclick=()=>{revealed=!revealed;draw()};$('#prev').onclick=()=>{i=(i-1+deck.length)%deck.length;revealed=false;draw()};$('#next').onclick=()=>{i=(i+1)%deck.length;revealed=false;draw()};$('#mix').onclick=()=>{deck=shuf(cards);i=0;revealed=false;draw()}}
+ draw();
+}
+function quizMenu(){app.innerHTML=`<h1>Quiz par thème</h1><p class="lead">QCM, vrai ou faux, réponses à écrire et chronologies à remettre dans l'ordre. Correction immédiate après chaque question. Pour les réponses écrites, les fautes de frappe légères et les accents oubliés sont acceptés.</p>
+ <div class="cols">${CH.map(c=>`<section class="card"><span class="tag">${c.n}</span><h2 style="margin-top:8px">${c.t}</h2>${c.themes.map(t=>`<div class="row"><a href="#q-${t.id}">${t.t} <span class="small">(${t.q.length})</span></a>${bestTag(t.id)}</div>`).join("")}
+ <div class="btns"><a class="btn" href="#q-${c.id}">Tout le chapitre (${c.themes.reduce((s,t)=>s+t.q.length,0)} questions)</a></div></section>`).join("")}</div>`}
+
+function reperes(){const all=[];TH.forEach(t=>{t.dates.forEach(d=>all.push(["d",d[0],d[1],t])),t.notions.forEach(n=>all.push(["n",n[0],n[1],t])),t.acteurs.forEach(a=>all.push(["a",a[0],a[1],t]))});
+ app.innerHTML=`<h1>Dates, notions et acteurs</h1><p class="lead">Tout le vocabulaire du thème au même endroit. Tape un mot pour filtrer.</p>
+ <div class="search"><input type="text" id="flt" placeholder="Ex. : Goulag, 1936, Roosevelt…" aria-label="Filtrer"></div>
+ <div class="seg" id="kind"><button class="on" data-k="">Tout</button><button data-k="d">Dates</button><button data-k="n">Notions</button><button data-k="a">Acteurs</button></div>
+ <table class="stack" style="margin-top:14px"><thead><tr><th>Repère</th><th>Explication</th><th>Fiche</th></tr></thead><tbody id="rb"></tbody></table>`;
+ let kind="";const draw=()=>{const f=clean($("#flt").value);
+  $("#rb").innerHTML=all.filter(r=>(!kind||r[0]===kind)&&(!f||clean(r[1]+" "+r[2]).includes(f))).map(r=>`<tr><td>${r[1]}</td><td>${r[2]}</td><td><a href="#f-${r[3].id}">${r[3].t}</a></td></tr>`).join("")||`<tr><td colspan="3">Aucun résultat.</td></tr>`};
+ $("#flt").oninput=draw;$("#kind").onclick=e=>{const b=e.target.closest("button");if(!b)return;kind=b.dataset.k;$("#kind").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));draw()};draw()}
+
+/* ================ MOTEUR DE QUESTIONS ================ */
+let S=null;
+function start(list,opts){S={list,i:0,res:[],opts};ask()}
+function ask(){const it=S.list[S.i],q=it.q,ev=S.opts.mode==="eval";
+ const head=`<div class="meta"><span>${esc(S.opts.title)}</span><span>Question ${S.i+1} / ${S.list.length}</span></div><div class="prog"><i style="width:${S.i/S.list.length*100}%"></i></div>
+ <span class="k">${QTYPE[q[0]]} · ${esc(it.t.t)}</span><div class="qt">${esc(q[1])}</div>`;
+ let body="";
+ if(q[0]==="q"){it.ord=it.ord||shuf(q[2].map((_,i)=>i));body=`<div class="opts">${it.ord.map(i=>`<button class="opt" data-i="${i}">${esc(q[2][i])}</button>`).join("")}</div>`}
+ else if(q[0]==="v")body=`<div class="opts"><button class="opt" data-i="1">Vrai</button><button class="opt" data-i="0">Faux</button></div>`;
+ else if(q[0]==="t")body=`<form id="tf"><input type="text" id="ti" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Ta réponse" aria-label="Ta réponse"><div class="btns"><button class="btn" type="submit">Valider</button>${ev?"":`<button class="btn ghost" type="button" id="skip">Je ne sais pas</button>`}</div></form>`;
+ else{it.pool=shuf(q[2]);it.pick=[];body=`<div class="slots" id="sl"></div><div class="chips" id="ch"></div><div class="btns"><button class="btn" id="ov" disabled>Valider l'ordre</button><button class="btn ghost" id="or">Recommencer</button></div>`}
+ app.innerHTML=`<div class="qbox">${head}${body}<div id="fb"></div><div class="btns" id="nx"></div></div>`;
+ if(q[0]==="q"||q[0]==="v")app.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{const v=+b.dataset.i,ok=q[0]==="q"?v===q[3]:(v===1)===q[2];
+  app.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(!ev){const xv=+x.dataset.i;if(q[0]==="q"?xv===q[3]:(xv===1)===q[2])x.classList.add("ok")}});
+  b.classList.add(ev?"pick":ok?"ok":"ko");done(ok,q[0]==="q"?q[2][v]:v?"Vrai":"Faux")});
+ if(q[0]==="t"){const ti=$("#ti");ti.focus({preventScroll:true});$("#tf").onsubmit=e=>{e.preventDefault();const v=ti.value.trim();if(!v)return;ti.disabled=true;$("#tf").querySelectorAll("button").forEach(b=>b.disabled=true);done(match(v,q[2]),v)};
+  const sk=$("#skip");if(sk)sk.onclick=()=>{ti.disabled=true;$("#tf").querySelectorAll("button").forEach(b=>b.disabled=true);done(false,"(pas de réponse)")}}
+ if(q[0]==="o"){const draw=()=>{$("#sl").innerHTML=q[2].map((_,k)=>`<div class="slot ${it.pick[k]!=null?"full":""}">${it.pick[k]!=null?esc(it.pick[k]):""}</div>`).join("");
+   $("#ch").innerHTML=it.pool.filter(x=>!it.pick.includes(x)).map(x=>`<button class="chip">${esc(x)}</button>`).join("");
+   $("#ch").querySelectorAll(".chip").forEach(c=>c.onclick=()=>{it.pick.push(c.textContent);draw()});$("#ov").disabled=it.pick.length<q[2].length};
+  draw();$("#or").onclick=()=>{it.pick=[];draw()};
+  $("#ov").onclick=()=>{$("#ov").disabled=$("#or").disabled=true;const ok=it.pick.every((x,k)=>x===q[2][k]);
+   if(!ev)app.querySelectorAll(".slot").forEach((s,k)=>s.style.borderColor=it.pick[k]===q[2][k]?"var(--ok)":"var(--ko)");done(ok,it.pick.join(" → "))}}}
+function done(ok,given){const it=S.list[S.i],q=it.q,ev=S.opts.mode==="eval",last=S.i===S.list.length-1;
+ S.res[S.i]={ok,given};
+ if(!ev){$("#fb").innerHTML=`<div class="fb ${ok?"ok":"ko"}"><b>${ok?"Bonne réponse.":"Pas tout à fait."}</b> ${ok&&q[0]!=="t"?"":"Réponse attendue : <b>"+esc(correctText(q))+"</b>. "}${esc(q[q[0]==="q"?4:3])}
+  ${!ok&&q[0]==="t"&&given!=="(pas de réponse)"?`<div class="btns"><button class="btn ghost" id="ovr">J'avais juste, compter ma réponse</button></div>`:""}</div>`;
+  const ovr=$("#ovr");if(ovr)ovr.onclick=()=>{S.res[S.i].ok=true;ovr.parentNode.innerHTML='<span class="small">Réponse comptée comme juste.</span>'}}
+ $("#nx").innerHTML=`<button class="btn" id="go">${last?"Voir le résultat":"Question suivante →"}</button>`;
+ const go=$("#go");go.onclick=()=>{last?result():(S.i++,ask(),scrollTo(0,0))};if(ev)go.focus({preventScroll:true})}
+
+function result(){const n=S.list.length,good=S.res.filter(r=>r.ok).length,ev=S.opts.mode==="eval",note=good/n*20,p=Math.round(good/n*100);
+ if(S.opts.key){const b=store.get("best-"+S.opts.key,0);if(p>b)store.set("best-"+S.opts.key,p)}
+ if(ev){const e=store.get("evals",[]);e.push(note);store.set("evals",e.slice(-20))}
+ const per={};S.list.forEach((it,k)=>{const id=it.t.id;per[id]=per[id]||{t:it.t,g:0,n:0};per[id].n++;if(S.res[k].ok)per[id].g++});
+ const rows=Object.values(per).sort((a,b)=>a.g/a.n-b.g/b.n);
+ const weak=rows.filter(r=>r.g/r.n<.6);
+ const errs=S.list.map((it,k)=>[it,S.res[k]]).filter(x=>!x[1].ok);
+ const mins=S.opts.t0?Math.round((Date.now()-S.opts.t0)/60000):null;
+ app.innerHTML=`<div class="qbox" style="max-width:860px"><span class="k">${esc(S.opts.title)}</span>
+ <div class="score">${note.toFixed(1).replace(".",",")}<small> /20</small></div>
+ <p class="lead">${good} bonnes réponses sur ${n}${mins!=null?` en ${mins} min`:""}. ${p>=85?"Excellent, ce thème est maîtrisé.":p>=60?"Bonne base, revois les erreurs ci-dessous.":"Il faut retravailler les fiches avant de recommencer."}</p>
+ ${rows.length>1?`<h3>Résultats par thème</h3><div class="bars">${rows.map(r=>{const v=Math.round(r.g/r.n*100);return`<div class="bar"><div class="t"><a href="#f-${r.t.id}">${esc(r.t.t)}</a><b>${r.g}/${r.n}</b></div><div class="m"><i style="width:${v}%;background:${v>=60?"var(--ok)":"var(--ko)"}"></i></div></div>`}).join("")}</div>`:""}
+ ${weak.length?`<div class="piege" style="background:var(--blue-bg);border-color:var(--blue)"><b>À retravailler en priorité :</b> ${weak.map(r=>`<a href="#f-${r.t.id}">${esc(r.t.t)}</a> (<a href="#q-${r.t.id}">quiz</a>)`).join(" · ")}</div>`:""}
+ <div class="btns"><button class="btn" id="again">Recommencer</button>${errs.length?`<button class="btn ghost" id="redo">Refaire seulement mes erreurs (${errs.length})</button>`:""}<a class="btn ghost" href="#accueil">Accueil</a></div>
+ ${errs.length?`<h3>Correction de tes erreurs</h3>${errs.map(([it,r])=>`<div class="err"><span class="k">${esc(it.t.t)}</span><div><b>${esc(it.q[1])}</b></div><div class="u">Ta réponse : ${esc(r.given)}</div><div class="a">Réponse : ${esc(correctText(it.q))}</div><div class="small">${esc(it.q[it.q[0]==="q"?4:3])}</div></div>`).join("")}`:`<p>Aucune erreur. Bravo.</p>`}</div>`;
+ const o=S.opts;$("#again").onclick=()=>route(true);
+ const rd=$("#redo");if(rd)rd.onclick=()=>start(shuf(errs.map(x=>({q:x[0].q,t:x[0].t}))),{title:"Révision de mes erreurs",mode:o.mode==="eval"?"train":o.mode});scrollTo(0,0)}
+
+function evalSetup(){let N=20,scope="all";const total=TH.reduce((s,t)=>s+t.q.length,0);
+ app.innerHTML=`<h1>Mode évaluation</h1><p class="lead">Conditions d'examen : questions tirées au hasard dans tous les thèmes, aucune correction pendant l'épreuve. À la fin, note sur 20, résultats par thème et correction détaillée.</p>
+ <div class="setup"><div><h3>Programme</h3><div class="seg" id="sc"><button class="on" data-v="all">Chapitres 1 et 2</button><button data-v="c1">Chapitre 1</button><button data-v="c2">Chapitre 2</button></div></div>
+ <div><h3>Nombre de questions</h3><div class="seg" id="nb"><button data-v="10">10</button><button class="on" data-v="20">20</button><button data-v="40">40</button><button data-v="999">Toutes</button></div></div>
+ <div class="btns"><button class="btn" id="go">Commencer l'évaluation</button></div><p class="small">${total} questions au total dans la banque.</p></div>`;
+ const seg=(id,f)=>$(id).onclick=e=>{const b=e.target.closest("button");if(!b)return;$(id).querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));f(b.dataset.v)};
+ seg("#sc",v=>scope=v);seg("#nb",v=>N=+v);
+ $("#go").onclick=()=>{const ths=TH.filter(t=>scope==="all"||t.ch.id===scope);
+  /* tirage équilibré : on pioche à tour de rôle dans chaque thème */
+  const pools=ths.map(t=>shuf(t.q).map(q=>({q,t})));const out=[];let k=0;const max=Math.min(N,pools.reduce((s,p)=>s+p.length,0));
+  while(out.length<max){const p=pools[k++%pools.length];if(p.length)out.push(p.pop())}
+  start(shuf(out),{title:"Évaluation · "+(scope==="all"?"chapitres 1 et 2":scope==="c1"?"chapitre 1":"chapitre 2"),mode:"eval",t0:Date.now()})}}
+
+/* ================ ROUTAGE ================ */
+function route(force){const h=location.hash.slice(1)||"accueil";
+ document.querySelectorAll("#nav a").forEach(a=>{const r=a.getAttribute("href").slice(1);a.classList.toggle("on",h===r||(r==="fiches"&&h.startsWith("f-"))||(r==="quiz"&&h.startsWith("q-")))});
+ if(h==="flashcards")return flashcards();if(h==="fiches")return fichesList();if(h==="quiz")return quizMenu();if(h==="evaluation")return evalSetup();if(h==="reperes")return reperes();
+ if(h.startsWith("f-")&&byId(h.slice(2)))return fiche(byId(h.slice(2)));
+ if(h.startsWith("q-")){const id=h.slice(2),c=CH.find(x=>x.id===id),t=byId(id);
+  if(c)return start(shuf(c.themes.flatMap(t=>t.q.map(q=>({q,t})))),{title:"Quiz · "+c.n,mode:"train",key:c.id});
+  if(t)return start(shuf(t.q.map(q=>({q,t}))),{title:"Quiz · "+t.t,mode:"train",key:t.id})}
+ home()}
+addEventListener("hashchange",()=>{route();scrollTo(0,0)});route();
+}
+</script>
+</body>
+</html>
