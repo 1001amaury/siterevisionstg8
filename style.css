@@ -7,3 +7,5 @@ details.card{display:block;padding:0}details.card summary{list-style:none;cursor
 @media(max-width:520px){details.card summary{min-height:150px}.bar{gap:8px}.theme-toggle{font-size:12px;padding:8px}.brand{font-size:17px}}
 .home-hero{grid-template-columns:1fr}.empty-subject{color:var(--muted);border:1px solid var(--line);background:var(--surface);padding:22px;margin:0}.card h3:last-of-type{overflow-wrap:anywhere}
 @media(max-width:520px){.hero h1{font-size:clamp(40px,11vw,52px);overflow-wrap:anywhere}}
+html,body{max-width:100%;overflow-x:clip}
+@media(max-width:860px){input,select,textarea{font-size:16px!important}}

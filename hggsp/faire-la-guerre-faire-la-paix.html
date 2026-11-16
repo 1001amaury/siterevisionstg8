@@ -394,7 +394,7 @@ ul.tl li{display:flex;gap:10px;align-items:baseline}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
 </style>
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"><script src="../theme.js"></script><link rel="stylesheet" href="../revision-pages.css">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"><script src="../theme.js"></script><link rel="stylesheet" href="../revision-pages.css"><script src="../quiz-drag.js"></script>
 <div class="app">
   <aside class="rail">
     <div class="brand">
@@ -1811,12 +1811,12 @@ function rQuiz() {
   let body = "";
   if (m.t === "mcq") body = `<div class="opts">${m.opts.map((o, i) => `<button class="opt${done ? (o.ok ? " good" : (m.user === i ? " bad" : "")) : ""}" data-o="${i}"${done ? " disabled" : ""}><span class="k">${"ABCD"[i]}</span><span>${esc(o.t)}</span></button>`).join("")}</div>`;
   if (m.t === "tf") body = `<div class="tf">${[true, false].map(v => `<button class="opt${done ? (v === m.a ? " good" : (m.user === v ? " bad" : "")) : ""}" data-tf="${v}"${done ? " disabled" : ""}>${v ? "Vrai" : "Faux"}</button>`).join("")}</div>`;
-  if (m.t === "short") body = `<div class="row" style="flex-wrap:nowrap"><input type="text" id="sa" autocomplete="off" placeholder="Ta réponse…" value="${esc(m.user || "")}"${done ? " disabled" : ""} style="${done ? `border-color:${m.ok ? "var(--ok)" : "var(--ko)"}` : ""}">${done ? "" : `<button class="btn primary" id="qval">Valider</button>`}</div>`;
+  if (m.t === "short") body = `<div class="short-answer"><input type="text" id="sa" aria-label="Ta réponse" autocomplete="off" placeholder="Ta réponse…" value="${esc(m.user || "")}"${done ? " disabled" : ""} style="${done ? `border-color:${m.ok ? "var(--ok)" : "var(--ko)"}` : ""}">${done ? "" : `<button class="btn primary" id="qval">Valider</button>`}</div>`;
   if (m.t === "match") body = `<div>${m.p.map((pr, i) => {
     const u = done ? m.user[i] : ""; const ok = done && u === pr[1];
     return `<div class="mrow${done ? (ok ? " good" : " bad") : ""}"><span>${esc(pr[0])}</span><select data-m="${i}"${done ? " disabled" : ""} aria-label="${esc(pr[0])}"><option value="">Choisir…</option>${m.rights.map(r => `<option${u === r ? " selected" : ""}>${esc(r)}</option>`).join("")}</select>${done && !ok ? `<span class="fix">→ ${esc(pr[1])}</span>` : ""}</div>`;
   }).join("")}</div>${done ? "" : `<button class="btn primary" id="qval" style="align-self:flex-start">Valider</button>`}`;
-  if (m.t === "order") body = `<div class="olist">${m.cur.map((it, i) => `<div class="oitem${done ? (it === m.it[i] ? " good" : " bad") : ""}"><span class="n">${i + 1}</span><span>${esc(it)}</span>${done ? (it === m.it[i] ? "" : `<span class="count">→ ${m.it.indexOf(it) + 1}</span>`) : `<span class="mv"><button data-up="${i}" aria-label="Monter"${i === 0 ? " disabled" : ""}>↑</button><button data-dn="${i}" aria-label="Descendre"${i === m.cur.length - 1 ? " disabled" : ""}>↓</button></span>`}</div>`).join("")}</div>${done ? "" : `<button class="btn primary" id="qval" style="align-self:flex-start">Valider l'ordre</button>`}`;
+  if (m.t === "order") body = `${done ? "" : `<p class="count">Glisse la poignée pour déplacer un élément, ou utilise les flèches.</p>`}<div class="olist">${m.cur.map((it, i) => `<div class="oitem${done ? (it === m.it[i] ? " good" : " bad") : " draggable-order"}" data-order-index="${i}">${done ? "" : `<span class="drag-handle" data-drag-handle aria-hidden="true" title="Glisser pour déplacer">⠿</span>`}<span class="n">${i + 1}</span><span>${esc(it)}</span>${done ? (it === m.it[i] ? "" : `<span class="count">→ ${m.it.indexOf(it) + 1}</span>`) : `<span class="mv"><button data-up="${i}" aria-label="Monter"${i === 0 ? " disabled" : ""}>↑</button><button data-dn="${i}" aria-label="Descendre"${i === m.cur.length - 1 ? " disabled" : ""}>↓</button></span>`}</div>`).join("")}</div>${done ? "" : `<button class="btn primary" id="qval" style="align-self:flex-start">Valider l'ordre</button>`}`;
 
   let fb = "";
   if (done) {
@@ -1838,7 +1838,7 @@ function rQuiz() {
     ${m.sub ? `<p class="mute">${esc(m.sub)}</p>` : ""}
     ${body}${fb}
   </div></div>`;
-  const sa = $("#sa"); if (sa && !done) sa.focus();
+  if (m.t === "order" && !done) bindOrderDrag(view, m, rQuiz);
   view.onclick = e => {
     if (e.target.closest("#qquit")) { QS = null; rQuiz(); return; }
     if (e.target.closest("#qnext")) { QS.i++; rQuiz(); window.scrollTo(0, 0); return; }

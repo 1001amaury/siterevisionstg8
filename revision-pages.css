@@ -11,3 +11,10 @@
 @media(max-width:860px){.hggsp .brand{align-items:center;flex-wrap:wrap;gap:8px}.hggsp .brand>a{margin:0!important}.hggsp .brand b{font-size:.95rem}.hggsp .theme-toggle{margin:0}.hggsp .nav a{min-height:40px}.histoire .mast{gap:8px}.histoire .mast b{font-size:21px}.histoire .mast span{display:none}}
 @media(max-width:480px){.hggsp .brand b{display:none}.histoire .mast b{font-size:18px}.histoire .mast>a{font-size:13px}.theme-toggle{font-size:12px;padding:8px}}
 @media(max-width:600px){.histoire .row>a{flex:1 1 0;overflow-wrap:anywhere}.histoire .row>.best,.histoire .row>.tag{flex:0 0 auto}.histoire .row{gap:8px}}
+/* Mobile input sizing prevents Safari's automatic focus zoom. */
+html,body{max-width:100%;overflow-x:clip}
+.short-answer{display:flex;align-items:stretch;gap:10px;min-width:0}.short-answer input{flex:1 1 0;min-width:0}.short-answer .btn{flex:0 0 auto}
+.oitem.draggable-order{grid-template-columns:44px 24px minmax(0,1fr) auto;gap:6px}.drag-handle{display:grid;place-items:center;min-width:44px;min-height:44px;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab;color:var(--mute);font-size:24px;border-radius:6px}.drag-handle:active{cursor:grabbing}.oitem.dragging{border-color:var(--war);background:var(--panel2);box-shadow:0 3px 12px #0002}.oitem .mv button{width:40px;height:40px}
+@media(max-width:860px){input,select,textarea{font-size:16px!important}.hggsp .rail{position:relative;top:auto}.hggsp body::before{display:none}}
+@media(max-width:480px){.short-answer{flex-direction:column}.short-answer input{width:100%;min-height:48px}.short-answer .btn{align-self:flex-start;min-height:44px}.oitem.draggable-order{padding:8px 6px;grid-template-columns:40px 18px minmax(0,1fr) auto;gap:4px}.drag-handle{min-width:40px}.oitem .mv{flex-direction:column}.oitem .mv button{height:36px;width:40px}}
+.oitem.drop-before{box-shadow:0 -3px 0 var(--war)}.oitem.drop-after{box-shadow:0 3px 0 var(--war)}
