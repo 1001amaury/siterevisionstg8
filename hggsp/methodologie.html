@@ -1,0 +1,899 @@
+<!doctype html><html lang="fr" class="hggsp"><head><meta property="og:type" content="website"><meta property="og:site_name" content="Mes révisions"><meta property="og:title" content="Méthode du bac HGGSP"><meta property="og:description" content="Cours, fiches et quiz pour réviser en terminale."><meta property="og:image" content="https://tg8r.netlify.app/apercu-partage.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="512"><meta property="og:image:height" content="512"><meta property="og:image:alt" content="Logo des révisions : un R blanc et un point rouge sur fond noir"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Méthode du bac HGGSP"><meta name="twitter:description" content="Cours, fiches et quiz pour réviser en terminale."><meta name="twitter:image" content="https://tg8r.netlify.app/apercu-partage.png"><link rel="icon" type="image/svg+xml" href="../favicon.svg"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Méthode du bac HGGSP</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout : rail de navigation à gauche, zone de travail centrée ; sur mobile, barre collante + onglets défilants.
+   Direction : salle des cartes de nuit. Deux couleurs seulement pour coder le chapitre : fiches de méthodologie. */
+:root{
+  --bg:#0d0d0d; --bg2:#141414; --panel:#1a1a1a; --panel2:#222222; --line:#2c2c2c; --line2:#3b3b3b;
+  --fg:#ededed; --fg2:#bcbcbc; --mute:#888888;
+  --war:#bd1026; --war-soft:rgba(189,16,38,.13);
+  --peace:#ededed; --peace-soft:rgba(220,220,220,.13);
+  --warn:#bdbdbd; --warn-soft:rgba(180,180,180,.1);
+  --ok:#ededed; --ok-soft:rgba(220,220,220,.12);
+  --ko:#ed5262; --ko-soft:rgba(189,16,38,.12);
+  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body:"IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --r:10px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg);color:var(--fg)}
+body{font-family:var(--body);font-size:15.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+input,select,textarea{font:inherit;color:var(--fg)}
+:focus-visible{outline:2px solid var(--peace);outline-offset:2px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.01em;text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(1.9rem,4.6vw,2.9rem);font-weight:700}
+h2{font-size:1.45rem}
+h3{font-size:1.08rem}
+p{margin:0}
+.mono,.d{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.mute{color:var(--mute)}
+
+/* ---------- shell ---------- */
+.app{display:grid;grid-template-columns:236px minmax(0,1fr);min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;border-right:1px solid var(--line);background:var(--bg2);padding:26px 18px;display:flex;flex-direction:column;gap:22px;overflow-y:auto}
+.brand{display:flex;flex-direction:column;gap:4px}
+.brand b{font-family:var(--display);font-size:1.12rem;line-height:1.2;font-weight:700}
+.brand b em{font-style:normal;color:var(--war)}
+.brand b i{font-style:normal;color:var(--peace)}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px;border-radius:7px;text-decoration:none;color:var(--fg2);font-size:.94rem}
+.nav a:hover{background:var(--panel);color:var(--fg)}
+.nav a.on{background:var(--panel2);color:var(--fg)}
+.nav a small{font-family:var(--mono);font-size:.7rem;color:var(--mute)}
+.rail-foot{margin-top:auto;display:flex;flex-direction:column;gap:8px}
+.mini{height:4px;background:var(--line);border-radius:4px;overflow:hidden}
+.mini i{display:block;height:100%;background:var(--fg2);border-radius:4px;transition:width .4s}
+main{min-width:0;padding-block:40px 80px;padding-left:max(28px, env(safe-area-inset-left, 0px));padding-right:max(28px, env(safe-area-inset-right, 0px))}
+.wrap{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+.wrap.wide{max-width:1080px}
+.head{display:flex;flex-direction:column;gap:10px}
+.head p{color:var(--fg2);max-width:62ch}
+
+@media (max-width:860px){
+  .app{grid-template-columns:minmax(0,1fr)}
+  body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg2)}
+  .rail{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;height:auto;flex-direction:column;gap:10px;padding:12px max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px));border-right:0;border-bottom:1px solid var(--line);overflow:visible}
+  .brand{flex-direction:row;align-items:baseline;justify-content:space-between}
+  .brand .eyebrow{display:none}
+  .nav{flex-direction:row;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px 10px}
+  .nav::-webkit-scrollbar{display:none}
+  .nav a{flex:none;padding:6px 11px;border:1px solid var(--line);border-radius:20px}
+  .nav a small{display:none}
+  .rail-foot{display:none}
+  main{padding-block:24px 64px;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+}
+
+/* ---------- éléments communs ---------- */
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.btn{display:inline-flex;align-items:center;gap:8px;justify-content:center;border:1px solid var(--line2);background:var(--panel2);border-radius:8px;padding:9px 15px;font-size:.92rem;font-weight:500;transition:background .15s,border-color .15s}
+.btn:hover{background:var(--line);border-color:var(--mute)}
+.btn.primary{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.btn.primary:hover{background:#fff}
+.btn.ghost{background:transparent}
+.btn.sm{padding:6px 11px;font-size:.84rem}
+.btn:disabled{opacity:.4;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line2);background:transparent;border-radius:20px;padding:5px 12px;font-size:.84rem;color:var(--fg2)}
+.chip:hover{color:var(--fg);border-color:var(--mute)}
+.chip.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:4px;border:1px solid var(--line2);color:var(--fg2)}
+.tag.war{color:var(--war);border-color:rgba(189,16,38,.45)}
+.tag.peace{color:var(--peace);border-color:rgba(220,220,220,.45)}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex:none}
+.dot.war{background:var(--war)} .dot.peace{background:var(--peace)}
+.bar{height:6px;background:var(--line);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:6px;background:var(--fg2);transition:width .5s ease}
+.bar.war i{background:var(--war)} .bar.peace i{background:var(--peace)}
+.empty{padding:28px;text-align:center;color:var(--mute);border:1px dashed var(--line2);border-radius:var(--r)}
+input[type=search],input[type=text],textarea,select{background:var(--panel);border:1px solid var(--line2);border-radius:8px;padding:10px 12px;width:100%}
+textarea{min-height:180px;resize:vertical;line-height:1.55}
+.check{display:inline-flex;align-items:center;gap:8px;font-size:.88rem;color:var(--fg2);cursor:pointer;user-select:none}
+.check input{accent-color:var(--ok);width:16px;height:16px}
+
+/* ---------- accueil ---------- */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:end;padding-bottom:26px;border-bottom:1px solid var(--line)}
+.hero h1 span.w{color:var(--war)} .hero h1 span.p{color:var(--peace)}
+.hero p{color:var(--fg2);max-width:52ch;margin-top:12px}
+.ring{position:relative;width:132px;height:132px}
+.ring svg{transform:rotate(-90deg)}
+.ring .v{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring .v b{font-family:var(--display);font-size:2rem;font-weight:700;line-height:1}
+.ring .v small{font-size:.72rem;color:var(--mute);margin-top:4px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.stat{display:flex;flex-direction:column;gap:8px;padding:14px 16px;border:1px solid var(--line);border-radius:var(--r);background:var(--panel);text-decoration:none}
+.stat:hover{border-color:var(--line2)}
+.stat .n{font-family:var(--display);font-size:1.5rem;font-weight:600;font-variant-numeric:tabular-nums}
+.stat .l{font-size:.82rem;color:var(--fg2)}
+.parts{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.part{display:flex;flex-direction:column;gap:12px}
+.part-h{display:flex;align-items:baseline;gap:10px}
+.part-h .roman{font-family:var(--display);font-weight:700;font-size:1.6rem}
+.part.war .roman{color:var(--war)} .part.peace .roman{color:var(--peace)}
+.vid{display:flex;flex-direction:column;gap:10px;padding:16px;border:1px solid var(--line);border-radius:var(--r);background:var(--panel);text-decoration:none;transition:border-color .15s,transform .15s}
+.vid:hover{border-color:var(--line2);transform:translateY(-1px)}
+.vid .top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.vid h3{font-size:1rem;line-height:1.3}
+.vid .meta{font-size:.8rem;color:var(--mute);font-variant-numeric:tabular-nums}
+.todo{display:flex;flex-direction:column}
+.todo a,.todo div.it{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:11px 2px;border-bottom:1px solid var(--line);text-decoration:none;font-size:.93rem}
+.todo a:last-child{border-bottom:0}
+.todo a:hover span:first-child{color:var(--fg)}
+.todo span:first-child{color:var(--fg2);min-width:0}
+.todo .cnt{font-family:var(--mono);font-size:.78rem;color:var(--mute);flex:none}
+.spaces{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.space{display:flex;flex-direction:column;gap:6px;padding:16px;border:1px solid var(--line);border-radius:var(--r);text-decoration:none;background:var(--bg2)}
+.space:hover{background:var(--panel)}
+.space b{font-family:var(--display);font-size:1.02rem;font-weight:600}
+.space span{font-size:.84rem;color:var(--mute)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .parts,.grid2{grid-template-columns:1fr}
+  .spaces{grid-template-columns:1fr 1fr}
+}
+
+/* ---------- cours ---------- */
+.vtabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.vtab{display:flex;flex-direction:column;gap:4px;padding:12px;border:1px solid var(--line);border-radius:8px;background:transparent;text-align:left;transition:border-color .15s}
+.vtab:hover{border-color:var(--line2)}
+.vtab .k{font-family:var(--mono);font-size:.7rem;color:var(--mute);letter-spacing:.08em}
+.vtab b{font-weight:600;font-size:.92rem;line-height:1.25}
+.vtab.on{background:var(--panel2);border-color:var(--mute)}
+.vtab.on.war{border-color:var(--war)} .vtab.on.peace{border-color:var(--peace)}
+@media (max-width:640px){.vtabs{grid-template-columns:1fr 1fr}}
+.vhead{display:flex;flex-direction:column;gap:8px}
+.vhead p{color:var(--fg2)}
+.toc{display:flex;flex-wrap:wrap;gap:6px}
+.toc a{font-size:.82rem;color:var(--fg2);text-decoration:none;padding:4px 10px;border:1px solid var(--line);border-radius:6px}
+.toc a:hover{color:var(--fg);border-color:var(--line2)}
+.toc a.read{color:var(--mute);text-decoration:line-through;text-decoration-color:var(--line2)}
+.secs{display:flex;flex-direction:column;gap:10px}
+details.sec{border:1px solid var(--line);border-radius:var(--r);background:var(--panel);scroll-margin-top:90px}
+details.sec[open]{border-color:var(--line2)}
+details.sec summary{list-style:none;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;padding:15px 18px;cursor:pointer}
+details.sec summary::-webkit-details-marker{display:none}
+.sec .lt{font-family:var(--mono);font-size:.78rem;color:var(--mute);width:22px}
+.sec .tt b{display:block;font-family:var(--display);font-weight:600;font-size:1.03rem;line-height:1.3}
+.sec .tt span{font-size:.84rem;color:var(--mute)}
+.sec .st{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line2);display:grid;place-items:center;font-size:.7rem;color:transparent}
+.sec.done .st{background:var(--ok);border-color:var(--ok);color:var(--bg)}
+.sec .body{padding:2px 18px 18px 54px;display:flex;flex-direction:column;gap:14px;max-width:76ch}
+@media (max-width:600px){.sec .body{padding:2px 16px 16px}}
+.body ul,.body ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px}
+.body li::marker{color:var(--mute)}
+.body dfn{font-style:normal;font-weight:600}
+.body b{font-weight:600;color:var(--fg)}
+.body p,.body li{color:var(--fg2)}
+.body .d{display:inline-block;font-size:.8rem;padding:1px 7px;border-radius:4px;background:var(--panel2);border:1px solid var(--line2);color:var(--fg);margin-right:4px;white-space:nowrap}
+.body a.t,.inl a.t{color:var(--fg);text-decoration:underline;text-decoration-color:var(--mute);text-underline-offset:3px;cursor:pointer}
+.body a.t:hover{text-decoration-color:var(--fg)}
+.body .def{padding:12px 14px;border-radius:8px;background:var(--panel2);color:var(--fg)}
+ol.steps{list-style:none;padding:0;counter-reset:s;gap:12px}
+ol.steps li{counter-increment:s;position:relative;padding-left:34px}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:50%;border:1px solid var(--line2);font-family:var(--mono);font-size:.72rem;display:grid;place-items:center;color:var(--fg2)}
+.box{padding:13px 15px;border-radius:8px;border:1px solid var(--line2);color:var(--fg2);font-size:.94rem}
+.box b:first-child{display:block;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.box.retenir{background:var(--ok-soft);border-color:rgba(220,220,220,.35)}
+.box.retenir b:first-child{color:var(--ok)}
+.box.piege{background:var(--warn-soft);border-color:rgba(180,180,180,.35)}
+.box.piege b:first-child{color:var(--warn)}
+.box.ex b:first-child{color:var(--fg)}
+.box.nb{border-style:dashed}
+.box.nb b:first-child{color:var(--mute)}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.vs>div{padding:13px 14px;border:1px solid var(--line2);border-radius:8px;display:flex;flex-direction:column;gap:6px}
+.vs .lab,.tri .lab{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--fg)}
+.tri{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.tri>div{padding:13px 14px;border:1px solid var(--line2);border-radius:8px;display:flex;flex-direction:column;gap:8px}
+@media (max-width:640px){.vs,.tri{grid-template-columns:1fr}}
+.exlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.exlist>div{padding:11px 13px;border-left:2px solid var(--line2);background:var(--bg2);border-radius:0 6px 6px 0;display:flex;flex-direction:column;gap:3px}
+.exlist .d{align-self:flex-start}
+.exlist b{font-size:.92rem}
+.exlist p{font-size:.86rem}
+.defs{margin:0;display:grid;grid-template-columns:minmax(150px,auto) 1fr;gap:8px 16px}
+.defs dt{font-weight:600}
+.defs dd{margin:0;color:var(--fg2)}
+@media (max-width:600px){.defs{grid-template-columns:1fr}.defs dd{margin-bottom:6px}}
+.p5{display:flex;flex-wrap:wrap;gap:6px}
+.p5 span{padding:6px 12px;border:1px solid rgba(220,220,220,.45);border-radius:6px;font-size:.88rem;color:var(--fg)}
+.p5 small{color:var(--mute)}
+ul.tl{list-style:none;padding:0;gap:8px}
+ul.tl li{display:flex;gap:10px;align-items:baseline}
+.markrow{display:flex;justify-content:flex-end;padding-top:4px}
+
+/* ---------- glossaire ---------- */
+.tools{display:flex;flex-direction:column;gap:12px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding-block:12px;z-index:5;border-bottom:1px solid var(--line)}
+@media (max-width:860px){.tools{position:static}}
+.terms{display:flex;flex-direction:column;gap:8px}
+.term{border:1px solid var(--line);border-radius:var(--r);background:var(--panel);scroll-margin-top:170px;transition:border-color .2s}
+.term.flash{border-color:var(--fg2)}
+.term-h{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:start;padding:14px 16px;cursor:pointer}
+.term-h b{font-family:var(--display);font-weight:600;font-size:1.04rem}
+.term-h p{color:var(--fg2);font-size:.93rem;margin-top:3px}
+.term.ok .term-h b::after{content:" ✓";color:var(--ok);font-size:.9rem}
+.term-b{padding:0 16px 16px;display:grid;gap:12px}
+.term-b .f{display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px;font-size:.92rem}
+.term-b .f>span:first-child{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);padding-top:3px}
+.term-b .f>div{color:var(--fg2)}
+@media (max-width:600px){.term-b .f{grid-template-columns:1fr;gap:2px}}
+.lnk{border:0;background:none;padding:0;color:var(--fg);text-decoration:underline;text-decoration-color:var(--mute);text-underline-offset:3px;font-size:inherit}
+.count{font-family:var(--mono);font-size:.8rem;color:var(--mute)}
+
+/* ---------- distinctions ---------- */
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:760px){.dgrid{grid-template-columns:1fr}}
+.dcard{border:1px solid var(--line);border-radius:var(--r);background:var(--panel);overflow:hidden;display:flex;flex-direction:column}
+.dcard .pair{display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch}
+.dcard .pair>div{padding:14px;display:flex;flex-direction:column;gap:5px}
+.dcard .pair b{font-family:var(--display);font-weight:600}
+.dcard .pair p{font-size:.88rem;color:var(--fg2)}
+.dcard .vsx{display:grid;place-items:center;font-family:var(--mono);font-size:.7rem;color:var(--mute);border-left:1px solid var(--line);border-right:1px solid var(--line);padding:0 8px}
+.dcard .foot{border-top:1px solid var(--line);padding:11px 14px;font-size:.86rem;color:var(--fg2);display:flex;flex-direction:column;gap:3px;margin-top:auto}
+.dcard .foot span{color:var(--mute)}
+
+/* ---------- exercices / quiz ---------- */
+.qcats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:760px){.qcats{grid-template-columns:1fr 1fr}}
+@media (max-width:460px){.qcats{grid-template-columns:1fr}}
+.qcat{display:flex;flex-direction:column;gap:10px;padding:16px;border:1px solid var(--line);border-radius:var(--r);background:var(--panel);text-align:left}
+.qcat:hover{border-color:var(--line2)}
+.qcat b{font-family:var(--display);font-size:1.05rem;font-weight:600}
+.qcat p{font-size:.85rem;color:var(--mute);flex:1}
+.qcat .sc{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.75rem;color:var(--fg2)}
+.qcat.special{background:var(--bg2);border-style:dashed}
+.qbox{display:flex;flex-direction:column;gap:18px}
+.qtop{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.qprog{flex:1;max-width:260px}
+.qq{font-family:var(--display);font-size:1.3rem;font-weight:600;line-height:1.3}
+.qtype{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;padding:13px 15px;border:1px solid var(--line2);border-radius:8px;background:var(--panel);font-size:.97rem;transition:border-color .15s,background .15s}
+.opt:hover:not(:disabled){border-color:var(--fg2)}
+.opt .k{font-family:var(--mono);font-size:.75rem;color:var(--mute);padding-top:2px;flex:none;width:14px}
+.opt.sel{border-color:var(--fg)}
+.opt.good{border-color:var(--ok);background:var(--ok-soft)}
+.opt.bad{border-color:var(--ko);background:var(--ko-soft)}
+.opt:disabled{cursor:default}
+.tf{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mrow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.mrow:last-child{border-bottom:0}
+.mrow.good select{border-color:var(--ok)} .mrow.bad select{border-color:var(--ko)}
+.mrow .fix{grid-column:2;font-size:.82rem;color:var(--ok)}
+@media (max-width:560px){.mrow{grid-template-columns:1fr}.mrow .fix{grid-column:1}}
+.olist{display:flex;flex-direction:column;gap:6px}
+.oitem{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 12px;border:1px solid var(--line2);border-radius:8px;background:var(--panel)}
+.oitem .n{font-family:var(--mono);font-size:.78rem;color:var(--mute)}
+.oitem .mv{display:flex;gap:4px}
+.oitem .mv button{width:30px;height:30px;border:1px solid var(--line2);background:var(--panel2);border-radius:6px;font-size:.8rem}
+.oitem.good{border-color:var(--ok)} .oitem.bad{border-color:var(--ko)}
+.fb{padding:14px 16px;border-radius:8px;display:flex;flex-direction:column;gap:6px;font-size:.95rem;animation:in .25s ease}
+.fb b:first-child{font-family:var(--display);font-size:1.02rem}
+.fb.good{background:var(--ok-soft);border:1px solid rgba(220,220,220,.4)}
+.fb.good b:first-child{color:var(--ok)}
+.fb.bad{background:var(--ko-soft);border:1px solid rgba(189,16,38,.4)}
+.fb.bad b:first-child{color:var(--ko)}
+.fb p{color:var(--fg2)}
+@keyframes in{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}
+.result{display:flex;flex-direction:column;gap:16px}
+.score{font-family:var(--display);font-size:3rem;font-weight:700;line-height:1}
+.recap{display:flex;flex-direction:column;gap:6px}
+.recap .r{display:grid;grid-template-columns:20px minmax(0,1fr);gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:.9rem}
+.recap .r .i{font-weight:700}
+.recap .r.good .i{color:var(--ok)} .recap .r.bad .i{color:var(--ko)}
+.recap .r p{color:var(--mute);font-size:.85rem;margin-top:3px}
+
+/* ---------- flashcards ---------- */
+.fc-stage{display:flex;flex-direction:column;gap:16px;align-items:stretch}
+.fc{perspective:1400px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.fc-in{display:grid;transition:transform .55s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d}
+.fc.flip .fc-in{transform:rotateY(180deg)}
+.fc-face{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden;min-height:270px;border:1px solid var(--line2);border-radius:14px;background:var(--panel);padding:26px 28px;display:flex;flex-direction:column;gap:14px}
+.fc-back{transform:rotateY(180deg);background:var(--panel2)}
+.fc-face .fq{font-family:var(--display);font-size:clamp(1.25rem,3vw,1.6rem);font-weight:600;line-height:1.3;flex:1;display:flex;align-items:center}
+.fc-face .fa{font-size:1.06rem;color:var(--fg);line-height:1.6;flex:1;display:flex;align-items:center}
+.fc-face .ft{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.fc-face .hint{font-size:.78rem;color:var(--mute)}
+.rate{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.rate button{padding:11px 8px;border-radius:8px;border:1px solid var(--line2);background:var(--panel);font-size:.9rem;font-weight:500}
+.rate .r1:hover,.rate .r1.on{border-color:var(--ko);background:var(--ko-soft)}
+.rate .r2:hover,.rate .r2.on{border-color:var(--warn);background:var(--warn-soft)}
+.rate .r3:hover,.rate .r3.on{border-color:var(--ok);background:var(--ok-soft)}
+.fc-nav{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.st-pill{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:4px}
+.st-pill.revoir{color:var(--ko);background:var(--ko-soft)}
+.st-pill.cours{color:var(--warn);background:var(--warn-soft)}
+.st-pill.maitrise{color:var(--ok);background:var(--ok-soft)}
+.st-pill.new{color:var(--mute);border:1px solid var(--line2)}
+.fstats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.fstats div{padding:10px 12px;border:1px solid var(--line);border-radius:8px;display:flex;flex-direction:column}
+.fstats b{font-family:var(--display);font-size:1.2rem;font-variant-numeric:tabular-nums}
+.fstats span{font-size:.75rem;color:var(--mute)}
+.filters{display:flex;flex-direction:column;gap:8px}
+.filters .row>span{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);width:78px}
+@media (max-width:560px){.filters .row>span{width:100%}}
+
+/* ---------- frise ---------- */
+.scale{position:relative;height:74px;border:1px solid var(--line);border-radius:var(--r);background:var(--bg2);overflow:hidden}
+.scale .axis{position:absolute;left:14px;right:14px;top:40px;height:1px;background:var(--line2)}
+.scale .tick{position:absolute;top:46px;font-family:var(--mono);font-size:.66rem;color:var(--mute);transform:translateX(-50%)}
+.scale .ev{position:absolute;top:34px;height:12px;min-width:12px;border-radius:6px;transform:translateX(-6px);border:0;padding:0;opacity:.85}
+.scale .ev.war{background:var(--war)} .scale .ev.peace{background:var(--peace)}
+.scale .ev.lane1{top:20px}
+.scale .ev.dim{opacity:.12}
+.scale .ev:hover{opacity:1;outline:2px solid var(--fg);outline-offset:1px}
+.scale-wrap{overflow-x:auto}
+.scale-wrap .scale{min-width:620px}
+.period{display:flex;flex-direction:column;gap:6px}
+.period-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:16px 0 6px;border-bottom:1px solid var(--line)}
+.period-h span{font-family:var(--mono);font-size:.78rem;color:var(--mute)}
+.evs{display:flex;flex-direction:column;position:relative;padding-left:20px}
+.evs::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--line2)}
+.evt{position:relative;scroll-margin-top:90px}
+.evt::before{content:"";position:absolute;left:-19px;top:20px;width:9px;height:9px;border-radius:50%;background:var(--bg);border:2px solid var(--mute)}
+.evt.war::before{border-color:var(--war)} .evt.peace::before{border-color:var(--peace)}
+.evt.open.war::before{background:var(--war)} .evt.open.peace::before{background:var(--peace)}
+.evt button.eh{display:grid;grid-template-columns:104px minmax(0,1fr) auto;gap:14px;width:100%;text-align:left;background:none;border:0;padding:12px 10px;border-radius:8px;align-items:baseline}
+.evt button.eh:hover{background:var(--panel)}
+.evt .yr{font-family:var(--mono);font-size:.86rem;color:var(--fg);font-variant-numeric:tabular-nums}
+.evt .et{font-weight:500}
+.evt .eb{padding:0 10px 14px 128px;display:flex;flex-direction:column;gap:10px;animation:in .25s ease}
+.evt .eb .f{font-size:.92rem;color:var(--fg2)}
+.evt .eb .f b{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);display:block;font-weight:400}
+@media (max-width:600px){.evt button.eh{grid-template-columns:1fr;gap:2px}.evt button.eh .tag{display:none}.evt .eb{padding:0 10px 14px}}
+
+/* ---------- bac ---------- */
+.subjects{display:flex;flex-direction:column;gap:10px}
+.subj{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;text-align:left;padding:16px 18px;border:1px solid var(--line);border-radius:var(--r);background:var(--panel)}
+.subj:hover{border-color:var(--line2)}
+.subj .n{font-family:var(--mono);font-size:.78rem;color:var(--mute)}
+.subj b{font-family:var(--display);font-weight:600;font-size:1.04rem;line-height:1.3;display:block}
+.subj span.ty{font-size:.8rem;color:var(--mute)}
+.blk{display:flex;flex-direction:column;gap:10px}
+.blk>h3{font-size:.76rem;font-family:var(--mono);font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.blk p,.blk li{color:var(--fg2)}
+.blk ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px}
+.planx{display:flex;flex-direction:column;gap:10px}
+.planx>div{padding:13px 15px;border:1px solid var(--line2);border-radius:8px}
+.planx b{font-family:var(--display);font-weight:600;display:block;margin-bottom:6px}
+.planx li{font-size:.93rem}
+.pb{font-family:var(--display);font-size:1.12rem;line-height:1.4;padding:16px 18px;border-left:3px solid var(--fg2);background:var(--panel)}
+.nchip{border:1px solid var(--line2);border-radius:6px;padding:4px 10px;font-size:.84rem;color:var(--mute);background:transparent;transition:all .2s}
+.nchip.hit{color:var(--bg);background:var(--ok);border-color:var(--ok)}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);overflow-x:auto}
+.tabs button{background:none;border:0;padding:10px 14px;color:var(--mute);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;font-size:.92rem}
+.tabs button.on{color:var(--fg);border-bottom-color:var(--fg)}
+.argopt{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;padding:11px 13px;border:1px solid var(--line2);border-radius:8px;background:var(--panel);text-align:left;align-items:start}
+.argopt .bx{width:18px;height:18px;border:1.5px solid var(--line2);border-radius:4px;display:grid;place-items:center;font-size:.7rem;margin-top:2px}
+.argopt.sel .bx{background:var(--fg);border-color:var(--fg);color:var(--bg)}
+.argopt.good{border-color:var(--ok);background:var(--ok-soft)}
+.argopt.bad{border-color:var(--ko);background:var(--ko-soft)}
+.argopt small{display:block;color:var(--fg2);font-size:.84rem;margin-top:3px}
+.method{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.method>div{padding:12px;border:1px solid var(--line2);border-radius:8px;display:flex;flex-direction:column;gap:4px}
+.method b{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+.method span{font-size:.86rem;color:var(--fg2)}
+@media (max-width:700px){.method{grid-template-columns:1fr 1fr}}
+.para{padding:16px 18px;border:1px solid var(--line2);border-radius:8px;line-height:1.75;color:var(--fg2)}
+.para mark{background:none;color:var(--fg);border-bottom:2px solid var(--line2)}
+.para mark.m1{border-color:var(--fg)} .para mark.m2{border-color:var(--peace)} .para mark.m3{border-color:var(--war)} .para mark.m4{border-color:var(--ok)}
+
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);background:var(--fg);color:var(--bg);padding:9px 16px;border-radius:8px;font-size:.88rem;font-weight:500;opacity:0;pointer-events:none;transition:all .25s;z-index:50}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+</style>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"><script src="../theme.js"></script><link rel="stylesheet" href="../revision-pages.css">
+<style>
+.src{display:inline-block;font-family:var(--mono);font-size:.66rem;letter-spacing:.04em;text-transform:uppercase;padding:1px 6px;margin-left:6px;border:1px solid var(--line2);border-radius:4px;color:var(--mute);white-space:nowrap;vertical-align:1px}
+.view[hidden]{display:none!important}
+.tl{display:grid;grid-template-columns:var(--a) var(--b);gap:6px}
+.tl>div{padding:12px 14px;border-radius:8px;border:1px solid var(--line2);display:flex;flex-direction:column;gap:2px}
+.tl>div:first-child{border-color:var(--war)}
+.tl b{font-family:var(--display)}
+.tl span{font-family:var(--mono);font-size:.78rem;color:var(--fg2)}
+.ck{display:flex;flex-direction:column;gap:8px}
+.ck label{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg2);cursor:pointer;font-size:.93rem;color:var(--fg2)}
+.ck label.on{color:var(--fg);border-color:var(--line2)}
+.ck input{margin-top:4px;accent-color:var(--ok);width:16px;height:16px;flex:0 0 auto}
+.where{font-size:.86rem;color:var(--fg2)}
+.where a{color:var(--fg)}
+@media(max-width:600px){.tl{grid-template-columns:1fr}}
+</style>
+<div class="app">
+  <aside class="rail">
+    <div class="brand">
+      <a href="index.html" style="display:block;margin-bottom:18px;font-size:.8rem;color:var(--fg2)">← Chapitres HGGSP</a>
+      <span class="eyebrow">Terminale HGGSP · Méthodologie</span>
+      <b><em>Méthode</em><br><i>du bac</i></b>
+      <button class="theme-toggle" type="button" data-theme-toggle>☾ Mode sombre</button>
+    </div>
+    <nav class="nav" id="nav">
+      <a href="#accueil" data-r="accueil">Vue d'ensemble</a>
+      <a href="#dissertation" data-r="dissertation">Dissertation <small>fiche 1</small></a>
+      <a href="#etude" data-r="etude">Étude critique <small>fiche 2</small></a>
+      <a href="#travailler" data-r="travailler">Travailler la spé <small>fiche 3</small></a>
+    </nav>
+    <div class="rail-foot">
+      <span class="eyebrow">Fiches comprises</span>
+      <div class="mini"><i id="railBar" style="width:0"></i></div>
+      <span class="mute" style="font-size:.8rem" id="railTxt"></span>
+    </div>
+  </aside>
+  <main id="view">
+
+<!-- ================= VUE D'ENSEMBLE ================= -->
+<section class="view wrap" data-view="accueil">
+  <div class="head"><span class="eyebrow">Terminale HGGSP · Méthodologie</span><h1>Méthode du bac</h1>
+  <p>Trois fiches construites uniquement à partir de cinq vidéos de méthodologie : la dissertation, l'étude critique de documents, et comment travailler la spé pour avoir de quoi remplir ces deux exercices. Chaque conseil indique la vidéo d'où il vient.</p></div>
+
+  <div class="card" style="display:flex;flex-direction:column;gap:14px">
+    <h3>L'épreuve écrite</h3>
+    <p class="where">4 heures pour deux exercices : une dissertation et une étude critique de documents, notées chacune sur 10 points. <span class="src">La Boîte à Bac</span></p>
+    <div class="tl" style="--a:2.4fr;--b:1.6fr"><div><b>Dissertation</b><span>2 h 15 à 2 h 30</span></div><div><b>Étude critique</b><span>1 h 30 à 1 h 45</span></div></div>
+    <p class="where">Garder 10 à 15 minutes pour se relire. <span class="src">La Boîte à Bac</span> Le professeur de la vidéo sur la dissertation compte lui aussi environ 2 h 30 pour la dissertation. <span class="src">Prof · dissertation</span></p>
+    <div class="box piege"><b>Le piège de la répartition</b>Les deux exercices valent autant de points : passer trop de temps sur la dissertation fait perdre des points sur l'étude critique. <span class="src">La Boîte à Bac</span> Une étude de documents bâclée en une heure parce que la dissertation a débordé, c'est exactement ce qu'il faut éviter. <span class="src">Élève (17-18)</span></div>
+  </div>
+
+  <div class="card" style="display:flex;flex-direction:column;gap:12px">
+    <h3>Ce que regarde le correcteur dès l'introduction</h3>
+    <p class="where">L'introduction est la « carte de visite » de la copie. Le correcteur la lit à travers trois cercles : <span class="src">F. Munier</span></p>
+    <ol class="steps body" style="padding-left:0">
+      <li><b>Le français et la présentation</b> : la copie est-elle claire, lisible, aérée, propre ? Grammaire et orthographe.</li>
+      <li><b>Les connaissances</b> : y a-t-il des références ? Les notions sont-elles clairement définies ?</li>
+      <li><b>La réflexion</b> : surtout dans le développement, mais elle se voit dès l'introduction.</li>
+    </ol>
+    <p class="where">Dès la fin de l'introduction, un correcteur expérimenté sait à peu près dans quel groupe se situe la copie (en dessous de 8, entre 8 et 12, au-dessus de 12). La suite permet d'affiner : une copie qui commence mal peut se relever, et l'inverse. <span class="src">F. Munier</span></p>
+    <p class="where">La méthodologie représente une grande partie de la note : il ne s'agit pas seulement de « trois parties, trois sous-parties », mais de comprendre ce que les correcteurs veulent voir. <span class="src">Élève (17-18)</span></p>
+  </div>
+
+  <section style="display:flex;flex-direction:column;gap:12px">
+    <h2>Les trois fiches</h2>
+    <div class="spaces">
+      <a class="space" href="#dissertation"><b>1 · La dissertation</b><span>Analyser le sujet, problématiser, construire le plan, rédiger.</span></a>
+      <a class="space" href="#etude"><b>2 · L'étude critique</b><span>Lire, problématiser avec les documents, éviter la paraphrase, critiquer.</span></a>
+      <a class="space" href="#travailler"><b>3 · Travailler la spé</b><span>Ce qu'il faut apprendre et comment, pour avoir de quoi appliquer la méthode.</span></a>
+    </div>
+  </section>
+
+  <div class="card" style="display:flex;flex-direction:column;gap:10px">
+    <h3>Les vidéos utilisées</h3>
+    <ul class="body" style="padding-left:20px;display:flex;flex-direction:column;gap:6px">
+      <li><span class="src" style="margin:0 6px 0 0">Élève (17-18)</span>Une élève qui a eu entre 17 et 18 toute l'année : conseils généraux sur la spé.</li>
+      <li><span class="src" style="margin:0 6px 0 0">Prof · étude critique</span>Un professeur d'HGGSP : la méthode de l'étude critique, sur un sujet de gouvernance mondiale du climat.</li>
+      <li><span class="src" style="margin:0 6px 0 0">La Boîte à Bac</span>Tanguy : la dissertation en six étapes, sur « La puissance des États-Unis au XXIe siècle ».</li>
+      <li><span class="src" style="margin:0 6px 0 0">Prof · dissertation</span>Un professeur d'HGGSP : la dissertation, sur « La Chine sur les mers et les océans ».</li>
+      <li><span class="src" style="margin:0 6px 0 0">F. Munier</span>Frédéric Munier, professeur de géopolitique (lycée Saint-Louis, SKEMA) : l'art de la dissertation et l'introduction.</li>
+    </ul>
+    <div class="box nb"><b>À savoir</b>Frédéric Munier parle surtout des dissertations de concours (copies de 8 pages, introduction d'une page). Ses principes valent pour le bac, mais pas ses longueurs : au bac, les autres vidéos insistent au contraire sur la concision.</div>
+  </div>
+</section>
+
+<!-- ================= DISSERTATION ================= -->
+<section class="view wrap" data-view="dissertation" hidden>
+  <div class="head"><span class="eyebrow">Fiche 1 · environ 2 h 30</span><h1>La dissertation</h1>
+  <p>Une dissertation n'est pas une récitation du cours, c'est une démonstration : on transforme ses connaissances pour répondre à une question précise.</p></div>
+  <nav class="toc" data-toc></nav>
+  <div class="secs">
+
+  <details class="sec" data-sec="d1"><summary><span class="lt">A</span><span class="tt"><b>Comprendre l'exercice</b><span>Démontrer, pas réciter.</span></span><span class="st">✓</span></summary><div class="body">
+    <p>La dissertation répond à une question posée. Si tes connaissances sont <b>x</b> et le sujet est une fonction <b>f</b>, ta copie est <b>f(x)</b> : tes connaissances transformées par le sujet. <b>f(x) n'est pas égal à x</b> : tu ne peux pas restituer ton cours tel quel. <span class="src">F. Munier</span></p>
+    <ul>
+      <li>On ne te demande pas de disserter en termes généraux, mais sur des <b>exemples précis</b>, avec un <b>fil conducteur</b> très clair : aller droit au but, avec des dates, des noms, des événements. <span class="src">Élève (17-18)</span></li>
+      <li>Sans tomber dans le <b>catalogue</b> où l'on liste toutes ses informations. <span class="src">Élève (17-18)</span></li>
+    </ul>
+    <div class="box retenir"><b>À retenir</b>La forme du sujet dicte la forme de la réponse. Un sujet n'est fait que de notions, d'un espace et d'une période : ne te laisse jamais impressionner. <span class="src">F. Munier</span></div>
+  </div></details>
+
+  <details class="sec" data-sec="d2"><summary><span class="lt">B</span><span class="tt"><b>Analyser le sujet</b><span>L'étape la plus importante, et la plus négligée.</span></span><span class="st">✓</span></summary><div class="body">
+    <p>L'analyse du sujet évite les deux pires écueils : le <b>hors-sujet</b> et la dissertation <b>incomplète</b>. <span class="src">La Boîte à Bac</span> Sur une dissertation de trois ou quatre heures, les erreurs fondamentales sont commises dans les <b>20 premières minutes</b>, presque toujours sur le libellé du sujet. <span class="src">F. Munier</span></p>
+    <ol class="steps">
+      <li><b>Recopie le sujet</b> au milieu d'une feuille de brouillon, en laissant de l'espace autour. <span class="src">La Boîte à Bac</span><span class="src">F. Munier</span></li>
+      <li><b>Repère les trois types de termes</b> : des notions, un espace, une période. Hors période, hors espace ou hors notion, tu es hors sujet. Exemple : parler des années 1960-1970 dans un sujet sur la mondialisation, ou traiter l'eau dans un sujet sur les matières premières (l'eau est une ressource, pas une matière première). <span class="src">F. Munier</span></li>
+      <li><b>Surligne et définis les notions.</b> Chaque mot d'une définition compte et peut en changer le sens : il faut donc apprendre les notions essentielles par cœur. Exemple : la puissance selon Serge Sur, « la capacité de faire, de faire faire, de refuser de faire ou d'empêcher de faire ». <span class="src">La Boîte à Bac</span></li>
+      <li><b>Évoque la notion</b> : note tout ce à quoi elle te fait penser, notions proches, aspects, notions contraires, premiers exemples. Cela servira pour le plan. <span class="src">La Boîte à Bac</span></li>
+      <li><b>Délimite le cadre spatio-temporel et demande-toi pourquoi ce cadre.</b> Pour « La puissance des États-Unis au XXIe siècle » : pourquoi les États-Unis (première puissance mondiale) ? Pourquoi le XXIe siècle (ce qui a modifié leur puissance : 2001, 2003, 2021, montée de la Chine) ? <span class="src">La Boîte à Bac</span></li>
+      <li><b>Pas de cadre indiqué ?</b> Sans indication d'espace, c'est le monde, ou du moins les pays vus en classe ; sans indication de date, on traite le sujet au présent. <span class="src">La Boîte à Bac</span><span class="src">Prof · dissertation</span></li>
+      <li><b>Regarde les petits mots.</b> « La puissance <i>des</i> États-Unis » (l'État face aux autres acteurs) et « la puissance <i>aux</i> États-Unis » (qui détient le pouvoir à l'intérieur) sont deux sujets complètement différents. <span class="src">La Boîte à Bac</span></li>
+      <li><b>Repère le sens de circulation.</b> Le premier terme est en général le sujet actif, les suivants sont des objets. Dans « L'Union européenne face aux défis de la mondialisation », tes paragraphes commencent par l'Union européenne ou ses acteurs, jamais par « la mondialisation… ». <span class="src">F. Munier</span></li>
+      <li><b>Repère les sujets débats.</b> Un « ou » et un point d'interrogation (« Le patrimoine : héritage du passé ou construction mémorielle ? ») t'obligent à te positionner, à opposer les deux visions et à les nuancer. <span class="src">La Boîte à Bac</span></li>
+      <li><b>Cherche les sous-entendus et l'intérêt du sujet</b> : pourquoi peut-on écrire plusieurs pages dessus ? Si l'on te donne les États-Unis au XXIe siècle, c'est que quelque chose a changé. Note les questions qui en découlent. <span class="src">La Boîte à Bac</span></li>
+    </ol>
+    <div class="box ex"><b>Le contre-exemple à retenir</b>Sur un sujet « Croissance, puissance et développement durable », la plupart des copies ont récité leur cours sur le développement durable : hors-sujet total. Il fallait suivre l'ordre des mots et se demander comment le couple croissance-puissance, fondé sur les énergies carbonées depuis la révolution industrielle, fait face aux impératifs du développement durable. <span class="src">F. Munier</span></div>
+  </div></details>
+
+  <details class="sec" data-sec="d3"><summary><span class="lt">C</span><span class="tt"><b>Trouver la problématique</b><span>Le fil rouge de toute la copie.</span></span><span class="st">✓</span></summary><div class="body">
+    <p>La problématique part du questionnement noté à la fin de l'analyse. Une ou deux questions, assez <b>larges</b> pour couvrir tout le sujet, assez <b>précises</b> pour éviter le hors-sujet. Chaque partie doit y apporter un élément de réponse. <span class="src">La Boîte à Bac</span></p>
+    <ul>
+      <li>Ni trop simple ni trop compliquée. Évite de recopier le sujet derrière « En quoi… » : tu risques un travail descriptif. Préfère « comment » ou « pourquoi », qui demandent une réponse plus complexe. <span class="src">Prof · dissertation</span><span class="src">Prof · étude critique</span></li>
+      <li>La problématique naît d'un <b>étonnement</b> : en définissant les termes, quelque chose surprend (le paradoxe), et ce paradoxe devient une question. Le paradoxe peut venir d'une comparaison entre le début et la fin de la période. <span class="src">F. Munier</span></li>
+      <li>Pas inspiré, ou pas sûr de tes connaissances ? Commence par le brainstorm (étape E) avant de chercher la problématique. <span class="src">La Boîte à Bac</span></li>
+    </ul>
+    <div class="exlist">
+      <div><b>« Les États-Unis peuvent-ils encore être qualifiés d'hyperpuissance au XXIe siècle ? »</b><p>Courte, mais elle couvre tout le sujet, y compris les concurrents et la nature de la puissance. <span class="src">La Boîte à Bac</span></p></div>
+      <div><b>« Comment la Chine cherche-t-elle à affirmer sa puissance sur les mers et les océans ? »</b><p>Le « comment » évite de simplement lister les enjeux. <span class="src">Prof · dissertation</span></p></div>
+    </div>
+    <div class="box nb"><b>Les vidéos ne disent pas tout à fait la même chose</b>Deux professeurs déconseillent « En quoi » et préfèrent « comment » ou « pourquoi » ; l'exemple de La Boîte à Bac est une question fermée (« peuvent-ils encore… ? »). Le point commun : une vraie question, qui guide toute la copie.</div>
+  </div></details>
+
+  <details class="sec" data-sec="d4"><summary><span class="lt">D</span><span class="tt"><b>Choisir le plan</b><span>Deux ou trois parties, équilibrées.</span></span><span class="st">✓</span></summary><div class="body">
+    <ul>
+      <li>Deux ou trois parties, ni plus ni moins. <span class="src">Prof · étude critique</span></li>
+      <li>Pas systématiquement trois parties et trois sous-parties : cela donne parfois des plans déséquilibrés. Repère : trois parties et 6 à 9 sous-parties. L'essentiel est l'<b>équilibre</b> entre les parties. <span class="src">Prof · dissertation</span></li>
+    </ul>
+    <div class="vs">
+      <div><span class="lab">Dialectique</span><p>Pour les sujets débats (questions fermées). En deux parties : thèse / antithèse, ou thèse / limites. En trois : thèse, antithèse, synthèse, qui dépasse l'opposition pour aborder l'enjeu caché du sujet. <span class="src">La Boîte à Bac</span></p></div>
+      <div><span class="lab">Thématique</span><p>Le tableau d'une situation par aspects : économique, politique, culturel… <span class="src">La Boîte à Bac</span><span class="src">Prof · dissertation</span></p></div>
+      <div><span class="lab">Chronologique</span><p>Des périodes successives, surtout quand le sujet donne une date (« depuis 1945 »). <span class="src">Prof · dissertation</span></p></div>
+      <div><span class="lab">Scalaire (multiscalaire)</span><p>Le même phénomène à plusieurs échelles : mondiale, régionale, nationale, locale. <span class="src">La Boîte à Bac</span><span class="src">Prof · dissertation</span></p></div>
+      <div><span class="lab">Factuel</span><p>Pour un événement : causes, formes (ce qui se passe), conséquences. <span class="src">La Boîte à Bac</span></p></div>
+      <div><span class="lab">Processus</span><p>Quand le cœur du sujet est un processus : ses enjeux, puis une typologie de ses formes. <span class="src">La Boîte à Bac</span></p></div>
+    </div>
+    <p>On peut <b>mélanger</b> ces plans : une partie chronologique, une thématique, une multiscalaire. <span class="src">Prof · dissertation</span><span class="src">La Boîte à Bac</span> Le plan peut avoir une forme différente de la problématique, du moment qu'il y répond : pour les États-Unis, un plan thématique (superpuissance militaire et diplomatique « au pied d'argile », puissance économique menacée, leader culturel aux valeurs contestées) répond mieux qu'un plan dialectique répétitif. <span class="src">La Boîte à Bac</span></p>
+    <div class="box ex"><b>Exemple sur le thème du patrimoine</b>« Le patrimoine : héritage du passé ou construction mémorielle ? » I. Le patrimoine s'est construit autour d'une mise en valeur du passé. II. Mais c'est notre point de vue contemporain et identitaire qui détermine la valeur patrimoniale de ce passé. III. Ainsi, la protection du patrimoine passe par la prise en compte de ses enjeux historiques, esthétiques, identitaires et économiques. La troisième partie dépasse le débat initial. <span class="src">La Boîte à Bac</span></div>
+  </div></details>
+
+  <details class="sec" data-sec="d5"><summary><span class="lt">E</span><span class="tt"><b>Faire le plan détaillé (brainstorm)</b><span>Toutes tes connaissances, rangées avant d'écrire.</span></span><span class="st">✓</span></summary><div class="body">
+    <ol class="steps">
+      <li>Une feuille de brouillon par partie, le titre de la partie en haut. Numérote tes feuilles. <span class="src">La Boîte à Bac</span></li>
+      <li>Note spontanément tout ce qui te vient, sans trop réfléchir. <span class="src">La Boîte à Bac</span><span class="src">Prof · dissertation</span></li>
+      <li>Interroge chaque partie : qui ? quand ? pourquoi ? comment ? dans quel but ? quelles limites ? Quelles notions, quels mécanismes, quels <b>exemples précis</b> (époque, chiffres clés, noms des acteurs) ? <span class="src">La Boîte à Bac</span></li>
+      <li>Regroupe en sous-parties. Puis, selon le temps : recopie les éléments sous chaque sous-partie, ou surligne-les d'une couleur par sous-partie et numérote-les dans l'ordre où tu les écriras. <span class="src">La Boîte à Bac</span></li>
+      <li>Dernière vérification : le plan et la problématique correspondent-ils toujours au sujet ? Après, le plan est figé. <span class="src">La Boîte à Bac</span></li>
+    </ol>
+    <div class="box retenir"><b>À retenir</b>Le brouillon peut être moche, plein d'abréviations et de fautes : il n'est que pour toi. Mais les chiffres et les dates doivent être précis, car ce sont eux qui valorisent la copie. <span class="src">La Boîte à Bac</span></div>
+  </div></details>
+
+  <details class="sec" data-sec="d6"><summary><span class="lt">F</span><span class="tt"><b>Rédiger l'introduction</b><span>Accroche, définitions, contexte, problématique, plan.</span></span><span class="st">✓</span></summary><div class="body">
+    <p class="def">La règle des 4 P : <b>Présentation</b> du sujet → <b>Paradoxe</b> → <b>Problématique</b> → <b>Plan</b>. <span class="src">F. Munier</span></p>
+    <ol class="steps">
+      <li><b>L'accroche</b> : un fait d'actualité, une situation, une référence historique ou artistique, une citation, une date. Elle doit faire comprendre l'enjeu du sujet et préparer la problématique. <span class="src">La Boîte à Bac</span><span class="src">Prof · dissertation</span> Une bonne accroche « accroche » à la fois le correcteur et les termes du sujet : notion, espace, période. <span class="src">F. Munier</span></li>
+      <li><b>La définition des termes</b> : les notions du sujet, mais aussi les notions transversales que tu utiliseras dans toutes tes parties, et celles qui apparaissent dans ta problématique (pour les États-Unis : hyperpuissance, hard power, soft power). <span class="src">La Boîte à Bac</span> Pour un sujet d'histoire, on peut plutôt poser le contexte. <span class="src">Prof · dissertation</span></li>
+      <li><b>Le contexte spatial et temporel</b>, en expliquant pourquoi ce lieu et cette période comptent. <span class="src">La Boîte à Bac</span></li>
+      <li><b>Le paradoxe puis la problématique</b>, sous forme de question directe, concise, précise. On peut l'introduire par « Ainsi, … ». <span class="src">F. Munier</span><span class="src">La Boîte à Bac</span></li>
+      <li><b>L'annonce du plan</b>, courte. De préférence au style indirect : une phrase par partie, chacune formulée comme une idée (« Les mers et les océans sont un enjeu majeur pour l'économie chinoise très mondialisée. La Chine cherche à les maîtriser pour des raisons de puissance politique. Enfin, l'affirmation de la puissance chinoise reste limitée. »). « Dans une première partie, nous verrons… » fonctionne mais reste lourd. <span class="src">Prof · dissertation</span><span class="src">Prof · étude critique</span></li>
+    </ol>
+    <ul>
+      <li><b>Proportions</b> : la présentation du sujet fait l'essentiel (environ deux tiers) ; paradoxe et problématique tiennent en quelques phrases ; l'annonce du plan est courte. Une annonce de plan démesurée avec une présentation maigre, c'est le signe d'une introduction bancale. <span class="src">F. Munier</span></li>
+      <li>L'introduction forme <b>un seul bloc</b> : on ne va pas à la ligne. <span class="src">F. Munier</span></li>
+      <li>Une introduction <b>ne raconte pas</b> : elle définit, s'étonne, pose une question, propose une démarche. <span class="src">F. Munier</span></li>
+    </ul>
+    <div class="box piege"><b>Les accroches</b>Vise une citation, une référence culturelle ou un fait précis <b>peu connu</b> : si tu apprends quelque chose au correcteur dès l'amorce, il est dans de très bonnes dispositions. Ne reprends pas les accroches qu'on voit partout sur internet. <span class="src">Élève (17-18)</span></div>
+    <div class="box nb"><b>Au brouillon ou directement au propre ?</b>Selon les professeurs, on rédige au brouillon l'introduction et la conclusion, jamais le développement. <span class="src">Prof · étude critique</span><span class="src">Prof · dissertation</span> Tanguy, lui, écrit son introduction directement au propre et seulement la conclusion au brouillon. <span class="src">La Boîte à Bac</span></div>
+  </div></details>
+
+  <details class="sec" data-sec="d7"><summary><span class="lt">G</span><span class="tt"><b>Rédiger la conclusion… avant le développement</b><span>Réponse, bilan, ouverture.</span></span><span class="st">✓</span></summary><div class="body">
+    <p>Écris la conclusion au brouillon <b>juste après l'introduction</b>, tant que tu as l'esprit frais et tout ton plan en tête. Faite au dernier moment, elle est bâclée, alors que c'est la dernière chose que lit le correcteur. <span class="src">La Boîte à Bac</span> En pratique, presque tous les élèves la commencent cinq minutes avant la fin : évite d'être dans ce cas. <span class="src">Prof · dissertation</span></p>
+    <ol class="steps">
+      <li><b>Réponds à la problématique.</b> Pas en répétant le plan, mais en reliant les idées traitées séparément (pour les États-Unis : relier puissance militaire, économique et culturelle autour du hard power et du soft power). <span class="src">La Boîte à Bac</span></li>
+      <li><b>Reprends l'idée de chaque partie</b> : une partie = une phrase. <span class="src">Prof · dissertation</span></li>
+      <li><b>Ouvre</b> en deux ou trois phrases : vers un autre pays, un autre espace, la période suivante, un sujet proche ou l'évolution prévisible du phénomène (pour les États-Unis : la Chine). <span class="src">Prof · dissertation</span><span class="src">La Boîte à Bac</span></li>
+    </ol>
+    <div class="box piege"><b>À éviter</b>Les prises de position personnelles, les fausses questions et les faux débats (une ouverture dont la réponse est évidente ou sans intérêt). <span class="src">La Boîte à Bac</span></div>
+  </div></details>
+
+  <details class="sec" data-sec="d8"><summary><span class="lt">H</span><span class="tt"><b>Rédiger le développement</b><span>Chapeaux, transitions, exemples explicités.</span></span><span class="st">✓</span></summary><div class="body">
+    <ul>
+      <li><b>Respecte ton plan détaillé.</b> <span class="src">La Boîte à Bac</span></li>
+      <li><b>Début de partie</b> : un chapeau (ou mini-introduction) qui annonce le sujet de la partie et ses sous-parties. <span class="src">La Boîte à Bac</span><span class="src">Prof · dissertation</span></li>
+      <li><b>Sous-parties</b> : environ 15 à 20 lignes chacune. <span class="src">Prof · dissertation</span></li>
+      <li><b>Fin de partie</b> : deux ou trois lignes de bilan qui dégagent l'idée principale, puis le lien vers la partie suivante. Une transition = un bilan + un chapeau. <span class="src">Prof · dissertation</span><span class="src">La Boîte à Bac</span></li>
+      <li><b>Le sujet actif commence tes paragraphes</b> (voir l'analyse du sujet). <span class="src">F. Munier</span></li>
+      <li><b>Définis les notions</b> que tu emploies. <span class="src">La Boîte à Bac</span> Dès que tu cites un concept, un événement, un groupe ou un nom, <b>explicite-le</b>, même si ça te paraît évident. <span class="src">Élève (17-18)</span></li>
+      <li><b>Tournure impersonnelle</b>, pas de « je » : on attend que tu rapportes les travaux des chercheurs, pas ton opinion. <span class="src">La Boîte à Bac</span></li>
+      <li><b>Relis la fin de chaque sous-partie</b> pour vérifier que tu es toujours dans le sujet et que tu suis ton fil conducteur. <span class="src">Élève (17-18)</span></li>
+    </ul>
+    <div class="box ex"><b>Présentation de la copie</b>Saute deux lignes entre l'introduction, le développement et la conclusion ; une ligne entre les parties ; va à la ligne avec un alinéa entre les sous-parties. <span class="src">La Boîte à Bac</span></div>
+  </div></details>
+
+  <details class="sec" data-sec="d9"><summary><span class="lt">I</span><span class="tt"><b>Gérer le temps et se relire</b><span>Less is more.</span></span><span class="st">✓</span></summary><div class="body">
+    <ul>
+      <li>Tu ne pourras jamais mettre tout ton cours. Mieux vaut une dissertation plus courte de deux ou trois pages, mais <b>équilibrée</b> et <b>relue</b>, avec peu de fautes. <span class="src">Élève (17-18)</span></li>
+      <li>Une copie concise et claire, où l'on voit que tu as appris, restitué et que tu sais où tu vas, vaut mieux qu'une copie très dense avec une conclusion minuscule faute de temps. <span class="src">Élève (17-18)</span></li>
+      <li>Garde 10 à 15 minutes pour relire l'orthographe et la syntaxe. <span class="src">La Boîte à Bac</span><span class="src">Prof · dissertation</span></li>
+    </ul>
+  </div></details>
+  </div>
+
+  <div class="card" style="display:flex;flex-direction:column;gap:12px">
+    <h3>Check-list avant de rendre la dissertation</h3>
+    <div class="ck" data-ck="diss">
+      <label><input type="checkbox"> Chaque notion du sujet est définie dans l'introduction.</label>
+      <label><input type="checkbox"> Je ne suis ni hors période, ni hors espace, ni hors notion.</label>
+      <label><input type="checkbox"> Mes paragraphes commencent par le sujet actif.</label>
+      <label><input type="checkbox"> Ma problématique est une vraie question, et chaque partie y répond.</label>
+      <label><input type="checkbox"> Mes parties sont équilibrées, avec chapeaux et transitions.</label>
+      <label><input type="checkbox"> Chaque exemple est précis (date, chiffre, acteurs) et explicité.</label>
+      <label><input type="checkbox"> Ma conclusion répond à la problématique et ouvre sans fausse question.</label>
+      <label><input type="checkbox"> J'ai relu l'orthographe et la syntaxe.</label>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ÉTUDE CRITIQUE ================= -->
+<section class="view wrap" data-view="etude" hidden>
+  <div class="head"><span class="eyebrow">Fiche 2 · 1 h 30 à 1 h 45</span><h1>L'étude critique de documents</h1>
+  <p>La méthode pas à pas d'un professeur d'HGGSP, illustrée par son sujet : « Après avoir présenté les documents, vous les utiliserez pour expliquer la mise en œuvre de la gouvernance mondiale sur la question climatique. »</p></div>
+  <nav class="toc" data-toc></nav>
+  <div class="secs">
+
+  <details class="sec" data-sec="e1"><summary><span class="lt">A</span><span class="tt"><b>Lire les documents une première fois</b><span>Saisir le sens global.</span></span><span class="st">✓</span></summary><div class="body">
+    <p>Une lecture simple, pour comprendre le sens général. Pas besoin de commencer tout de suite à surligner. <span class="src">Prof · étude critique</span></p>
+  </div></details>
+
+  <details class="sec" data-sec="e2"><summary><span class="lt">B</span><span class="tt"><b>Analyser la consigne</b><span>Mots clés et limites du sujet.</span></span><span class="st">✓</span></summary><div class="body">
+    <p>Lis attentivement la consigne et dégage les mots clés : ils fixent les <b>limites</b> du sujet. <span class="src">Prof · étude critique</span></p>
+    <div class="box ex"><b>Exemple</b>Mots clés : « expliquer », « gouvernance mondiale », « question climatique ». « Question climatique » : on ne traite pas toute la question environnementale. « Gouvernance mondiale » : les États-Unis, par exemple, ne seront pas le cœur du sujet. <span class="src">Prof · étude critique</span></div>
+  </div></details>
+
+  <details class="sec" data-sec="e3"><summary><span class="lt">C</span><span class="tt"><b>Trouver la problématique</b><span>Les documents doivent y apparaître.</span></span><span class="st">✓</span></summary><div class="body">
+    <ul>
+      <li>C'est une étude critique de documents : les <b>documents doivent apparaître</b> dans la problématique. <span class="src">Prof · étude critique</span></li>
+      <li>Préfère « pourquoi » et « comment » à « en quoi » : ils posent des questions plus complexes et donnent plus de sens. <span class="src">Prof · étude critique</span></li>
+    </ul>
+    <p class="def">« À l'aide de ces deux documents, nous allons voir comment la gouvernance mondiale sur la question climatique s'est mise en place. » <span class="src">Prof · étude critique</span></p>
+  </div></details>
+
+  <details class="sec" data-sec="e4"><summary><span class="lt">D</span><span class="tt"><b>Lire en profondeur</b><span>L'implicite et ce qu'il faut expliquer.</span></span><span class="st">✓</span></summary><div class="body">
+    <p>Reprends les documents en fonction de ta problématique et repère : <span class="src">Prof · étude critique</span></p>
+    <ul>
+      <li>les éléments <b>implicites</b> ;</li>
+      <li>les éléments qui <b>doivent être expliqués</b>.</li>
+    </ul>
+    <div class="box ex"><b>Exemple d'implicite</b>Le document 1 commence par « Les sommets de la Terre réunis à l'instigation de l'ONU depuis 1972 ». La date 1972 doit tout de suite faire « tilt » : c'est le contexte des années 1970 (Earth Day aux États-Unis, rapport Meadows du Club de Rome). Tu extrais la date et tu expliques pourquoi elle est importante : c'est ça, l'implicite. <span class="src">Prof · étude critique</span></div>
+  </div></details>
+
+  <details class="sec" data-sec="e5"><summary><span class="lt">E</span><span class="tt"><b>Construire le plan</b><span>Deux ou trois parties, sans sous-parties.</span></span><span class="st">✓</span></summary><div class="body">
+    <ul>
+      <li>Une fois les documents bien travaillés, des parties doivent apparaître. <span class="src">Prof · étude critique</span></li>
+      <li><b>Deux ou trois parties</b>, ni plus ni moins, comme en dissertation. <span class="src">Prof · étude critique</span></li>
+      <li><b>Pas de sous-parties</b> dans l'étude critique. <span class="src">Prof · étude critique</span></li>
+      <li>Formulation de préférence <b>indirecte</b> : une phrase par partie. « Dans une première partie, nous verrons… puis nous montrerons… » est possible si tu es moins à l'aise, mais les correcteurs préfèrent largement la première solution. <span class="src">Prof · étude critique</span></li>
+    </ul>
+    <div class="box ex"><b>Le plan du corrigé</b>I. La gouvernance mondiale s'est organisée progressivement sous l'impulsion de l'ONU à partir de 1972. II. Malgré la multiplication des conférences, le bilan de la gouvernance mondiale reste contrasté. III. La question climatique ne se limite pas à l'échelle mondiale. <span class="src">Prof · étude critique</span></div>
+  </div></details>
+
+  <details class="sec" data-sec="e6"><summary><span class="lt">F</span><span class="tt"><b>Rédiger l'introduction</b><span>Au brouillon, avec l'intro et la conclusion seulement.</span></span><span class="st">✓</span></summary><div class="body">
+    <p>On ne rédige au brouillon <b>que l'introduction et la conclusion</b> ; le développement s'écrit directement sur la copie. <span class="src">Prof · étude critique</span></p>
+    <ol class="steps">
+      <li><b>Accroche ou contextualisation</b>, deux ou trois lignes au minimum : une citation (« Notre maison brûle et nous regardons ailleurs », Jacques Chirac) ou la définition de termes importants. <span class="src">Prof · étude critique</span></li>
+      <li><b>Présentation des documents</b> : leur nature, le ou les auteurs, les sources, et en une phrase le sujet de chacun. <span class="src">Prof · étude critique</span></li>
+      <li><b>La problématique</b>, en une phrase. <span class="src">Prof · étude critique</span></li>
+      <li><b>L'annonce du plan</b> : une phrase par partie. <span class="src">Prof · étude critique</span></li>
+    </ol>
+  </div></details>
+
+  <details class="sec" data-sec="e7"><summary><span class="lt">G</span><span class="tt"><b>Rédiger le développement</b><span>Citer le document, puis l'expliquer avec tes connaissances.</span></span><span class="st">✓</span></summary><div class="body">
+    <ol class="steps">
+      <li><b>Pars d'une citation</b> du texte, ou d'une référence précise au document (la carte). Si tu n'as rien cité dans les quatre ou cinq premières lignes de la partie, il y a un problème. <span class="src">Prof · étude critique</span></li>
+      <li><b>Explique</b> ce qu'elle veut dire : apporte des connaissances personnelles et définis les notions qui l'éclairent. <span class="src">Prof · étude critique</span></li>
+    </ol>
+    <div class="box ex"><b>Exemple</b>Citation : « Ces grandes réunions offrent des bilans assez minces. » Question à se poser : que veulent dire les auteurs ? « Grandes réunions » renvoie par exemple à la COP 21 de Paris. « Bilans assez minces » : peu de pays atteignent leurs objectifs, même l'Union européenne avec le Green Deal n'atteint pas les objectifs de l'accord de Paris, et l'on peut évoquer le climatoscepticisme de Donald Trump. Une petite citation, trois idées de connaissances. <span class="src">Prof · étude critique</span></div>
+    <div class="box retenir"><b>Présentation</b>Va au minimum à la ligne entre les parties (sauter une ligne, c'est mieux). À l'intérieur d'une partie, ne va <b>jamais</b> à la ligne : chaque partie forme un bloc, et le correcteur voit tout de suite le plan. <span class="src">Prof · étude critique</span></div>
+  </div></details>
+
+  <details class="sec" data-sec="e8"><summary><span class="lt">H</span><span class="tt"><b>Éviter la paraphrase</b><span>1/3 de citations, 2/3 de connaissances.</span></span><span class="st">✓</span></summary><div class="body">
+    <p class="def"><b>Paraphraser</b>, c'est expliquer une citation en redonnant simplement son sens. Exemple : expliquer « le rôle de la société civile semble aussi limité » par « la société civile a peu de pouvoir » : tu as dit deux fois la même chose. <span class="src">Prof · étude critique</span></p>
+    <ul>
+      <li>Limite les citations et apporte davantage de connaissances. <span class="src">Prof · étude critique</span></li>
+      <li>Bon ratio : <b>1/3, voire 1/4, de citations ou références au document</b> pour <b>2/3, voire 3/4, de connaissances</b>. Si tu as beaucoup plus de citations que de connaissances, tu es « sur l'autoroute de la paraphrase ». <span class="src">Prof · étude critique</span></li>
+    </ul>
+  </div></details>
+
+  <details class="sec" data-sec="e9"><summary><span class="lt">I</span><span class="tt"><b>Conclure et critiquer</b><span>Réponse, bilan, critique, ouverture.</span></span><span class="st">✓</span></summary><div class="body">
+    <ol class="steps">
+      <li><b>Réponds à la problématique</b> : c'est la base. <span class="src">Prof · étude critique</span></li>
+      <li><b>Résume chaque partie</b> : une phrase avec l'idée majeure de chaque partie. <span class="src">Prof · étude critique</span></li>
+      <li><b>Critique les documents</b>, soit dans une partie entière du développement, soit dans la conclusion. <span class="src">Prof · étude critique</span></li>
+      <li><b>Ouvre</b> vers un autre sujet : la partie suivante du programme en histoire, un autre espace ou une autre échelle en géographie. Exemple du corrigé : la guerre économique entre la Chine, les États-Unis et l'Union européenne sur la transition écologique. <span class="src">Prof · étude critique</span></li>
+    </ol>
+    <div class="box piege"><b>Critiquer, ce n'est pas dire que le document est mauvais</b>La critique peut être positive : noter l'intérêt du document. L'important est de prendre de la distance. Une piste toujours disponible : chaque document est un <b>point de vue</b>, qui éclaire un aspect et peut en laisser d'autres de côté. Dans le corrigé, la carte est rapprochée d'une citation du climatologue François-Marie Bréon : « Tout cela prend du temps alors qu'il est urgent d'agir. » <span class="src">Prof · étude critique</span></div>
+  </div></details>
+
+  <details class="sec" data-sec="e10"><summary><span class="lt">J</span><span class="tt"><b>Le temps</b><span>Ne pas la sacrifier.</span></span><span class="st">✓</span></summary><div class="body">
+    <p>Compte 1 h 30 à 1 h 45 ; l'étude critique est un peu plus rapide que la dissertation. <span class="src">La Boîte à Bac</span> Une étude de documents bâclée en une heure parce que la dissertation a débordé coûte cher. <span class="src">Élève (17-18)</span></p>
+    <p>Le meilleur moyen de réussir les études critiques, c'est de s'entraîner, notamment avec les activités proposées en classe. <span class="src">Prof · étude critique</span></p>
+  </div></details>
+  </div>
+
+  <div class="card" style="display:flex;flex-direction:column;gap:12px">
+    <h3>Check-list avant de rendre l'étude critique</h3>
+    <div class="ck" data-ck="etude">
+      <label><input type="checkbox"> Les documents sont présentés : nature, auteur, source, sujet.</label>
+      <label><input type="checkbox"> Les documents apparaissent dans ma problématique.</label>
+      <label><input type="checkbox"> Deux ou trois parties, sans sous-parties, annoncées une phrase chacune.</label>
+      <label><input type="checkbox"> Chaque partie commence par une citation ou une référence au document.</label>
+      <label><input type="checkbox"> J'ai expliqué l'implicite (dates, noms, notions) avec mes connaissances.</label>
+      <label><input type="checkbox"> Pas de paraphrase : environ 1/3 de citations pour 2/3 de connaissances.</label>
+      <label><input type="checkbox"> J'ai critiqué les documents (intérêt, point de vue, ce qu'ils laissent de côté).</label>
+      <label><input type="checkbox"> Ma conclusion répond à la problématique et ouvre.</label>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRAVAILLER LA SPÉ ================= -->
+<section class="view wrap" data-view="travailler" hidden>
+  <div class="head"><span class="eyebrow">Fiche 3 · pendant l'année</span><h1>Travailler la spé concrètement</h1>
+  <p>Connaître la méthode ne sert à rien sans de quoi la remplir. Cette fiche reprend tout ce que les vidéos attendent comme connaissances et le transforme en choses à faire pendant les révisions.</p></div>
+
+  <div class="card" style="display:flex;flex-direction:column;gap:12px">
+    <h3>Ce que les épreuves exigent de savoir</h3>
+    <div class="exlist">
+      <div><b>Des définitions exactes</b><p>Apprises par cœur, mot à mot, avec leur auteur quand il y en a un. <span class="src">La Boîte à Bac</span></p></div>
+      <div><b>Des dates, des noms, des événements</b><p>Pas seulement des concepts généraux. <span class="src">Élève (17-18)</span></p></div>
+      <div><b>Des exemples précis</b><p>Époque, chiffres clés, noms des acteurs. <span class="src">La Boîte à Bac</span></p></div>
+      <div><b>Les jalons, et au-delà</b><p>La base obligatoire, puis ce qui te démarque. <span class="src">Élève (17-18)</span></p></div>
+      <div><b>Le sens de chaque date</b><p>Pour expliquer l'implicite des documents. <span class="src">Prof · étude critique</span></p></div>
+      <div><b>Des travaux de chercheurs</b><p>Pour argumenter sans « je ». <span class="src">La Boîte à Bac</span></p></div>
+      <div><b>Des accroches personnelles</b><p>Citations, références, faits peu connus. <span class="src">Élève (17-18)</span></p></div>
+    </div>
+  </div>
+
+  <nav class="toc" data-toc></nav>
+  <div class="secs">
+  <details class="sec" data-sec="t1"><summary><span class="lt">A</span><span class="tt"><b>Partir des jalons, puis les dépasser</b><span>La base d'abord, la différence ensuite.</span></span><span class="st">✓</span></summary><div class="body">
+    <p>Les jalons sont de gros éclairages sur chaque chapitre, et beaucoup de professeurs s'en tiennent à eux. <span class="src">Élève (17-18)</span></p>
+    <ol class="steps">
+      <li><b>Maîtrise parfaitement chaque jalon.</b> Sans les jalons, le correcteur part du principe que tu n'as même pas la base, et ça peut beaucoup te pénaliser. <span class="src">Élève (17-18)</span></li>
+      <li><b>Puis dépasse-les</b> : c'est ce qui te démarquera le jour du bac et auprès de ton professeur. <span class="src">Élève (17-18)</span></li>
+    </ol>
+    <p class="where">Sur le site : le cours de chaque chapitre suit les jalons du programme ; commence par le marquer entièrement comme lu.</p>
+  </div></details>
+
+  <details class="sec" data-sec="t2"><summary><span class="lt">B</span><span class="tt"><b>Apprendre les notions par cœur</b><span>Chaque mot de la définition compte.</span></span><span class="st">✓</span></summary><div class="body">
+    <ul>
+      <li>Les définitions sont essentielles parce que chaque mot peut modifier la définition, voire la changer complètement : il faut apprendre par cœur les notions essentielles. <span class="src">La Boîte à Bac</span></li>
+      <li>Retiens l'auteur quand la définition en a un (la puissance selon Serge Sur). <span class="src">La Boîte à Bac</span></li>
+      <li>Pour chaque notion, entraîne-toi à l'<b>évoquer</b> : notions proches, aspects, notions contraires, exemples. C'est ce que tu feras au brouillon le jour J pour trouver ton plan. <span class="src">La Boîte à Bac</span></li>
+      <li>Repère aussi les notions <b>transversales</b> du chapitre, celles qui reviennent partout et qu'on définit dès l'introduction (comme hard power et soft power). <span class="src">La Boîte à Bac</span></li>
+    </ul>
+    <p class="where">Sur le site : le glossaire de chaque chapitre (case « je maîtrise »), ses « notions liées » et les flashcards.</p>
+  </div></details>
+
+  <details class="sec" data-sec="t3"><summary><span class="lt">C</span><span class="tt"><b>Se constituer des exemples précis</b><span>Date, chiffre, acteurs, et savoir les expliciter.</span></span><span class="st">✓</span></summary><div class="body">
+    <p>Les idées générales ne suffisent pas : on te demande de disserter sur des exemples précis, avec des dates, des noms et des événements. <span class="src">Élève (17-18)</span> Un exemple précis donne l'époque, les chiffres clés et le nom des acteurs. <span class="src">La Boîte à Bac</span></p>
+    <p>Pour chaque exemple de ton cours, vérifie que tu sais :</p>
+    <ol class="steps">
+      <li>le <b>dater</b> ;</li>
+      <li>donner un ou deux <b>chiffres clés</b> exacts (les chiffres précis valorisent la copie) ; <span class="src">La Boîte à Bac</span></li>
+      <li>nommer les <b>acteurs</b> ;</li>
+      <li>l'<b>expliciter</b> en une ou deux phrases, même s'il te paraît évident ; <span class="src">Élève (17-18)</span></li>
+      <li>dire quelle <b>notion</b> il illustre, pour l'utiliser dans un raisonnement et pas dans un catalogue. <span class="src">Élève (17-18)</span><span class="src">F. Munier</span></li>
+    </ol>
+    <p class="where">Sur le site : la frise (date + importance + notions illustrées) et l'exercice « Notions ↔ exemples » de l'entraînement bac.</p>
+  </div></details>
+
+  <details class="sec" data-sec="t4"><summary><span class="lt">D</span><span class="tt"><b>Savoir ce qu'il y a derrière chaque date</b><span>Pour faire parler l'implicite des documents.</span></span><span class="st">✓</span></summary><div class="body">
+    <p>En étude critique, une date dans un document doit déclencher un réflexe : tu dois pouvoir expliquer pourquoi elle est importante et dans quel contexte elle s'inscrit (« depuis 1972 » → les années 1970, le rapport Meadows du Club de Rome). <span class="src">Prof · étude critique</span></p>
+    <p>C'est ce qui permet de tenir le bon ratio : un tiers de citations, deux tiers de connaissances. Sans ces connaissances, il ne reste que la paraphrase. <span class="src">Prof · étude critique</span></p>
+    <p class="where">Sur le site : la frise de chaque chapitre, avec pour chaque date son explication et son importance.</p>
+  </div></details>
+
+  <details class="sec" data-sec="t5"><summary><span class="lt">E</span><span class="tt"><b>Préparer ses accroches</b><span>Ta banque personnelle, chapitre par chapitre.</span></span><span class="st">✓</span></summary><div class="body">
+    <ul>
+      <li>De très bonnes accroches font toute la différence et ce n'est pas si dur : une citation, une référence culturelle, un fait précis mais <b>peu connu</b>. <span class="src">Élève (17-18)</span></li>
+      <li>Ne reprends pas les accroches qui circulent partout sur internet : elles fonctionnent, mais sans l'effet recherché. <span class="src">Élève (17-18)</span></li>
+      <li>Une bonne accroche touche les termes possibles du sujet (notion, espace, période), pas seulement l'attention du correcteur. <span class="src">F. Munier</span></li>
+      <li>Les sources possibles : un fait d'actualité, une situation, une référence historique ou artistique, une citation, une date. <span class="src">La Boîte à Bac</span><span class="src">Prof · dissertation</span><span class="src">Prof · étude critique</span></li>
+    </ul>
+    <p class="where">À faire : pendant que tu révises un chapitre, note dans un coin de ta fiche deux ou trois accroches possibles.</p>
+  </div></details>
+
+  <details class="sec" data-sec="t6"><summary><span class="lt">F</span><span class="tt"><b>Repérer les paradoxes et les débats</b><span>La matière première des problématiques.</span></span><span class="st">✓</span></summary><div class="body">
+    <ul>
+      <li>La problématique naît d'un étonnement, souvent d'une comparaison entre le début et la fin d'une période, ou d'une tension (par exemple coopération d'un côté, conflit de l'autre). <span class="src">F. Munier</span></li>
+      <li>Les sujets débats (« … ou … ? ») demandent d'opposer deux visions puis de les nuancer : connais pour chaque grande question du chapitre les arguments des deux côtés. <span class="src">La Boîte à Bac</span></li>
+      <li>Demande-toi pour chaque chapitre ce qui a changé et pourquoi : c'est ce que cachent les sous-entendus des sujets (« au XXIe siècle » = quelque chose a changé). <span class="src">La Boîte à Bac</span></li>
+    </ul>
+    <p class="where">Sur le site : la page « Distinctions » et l'exercice « Construire un argument ».</p>
+  </div></details>
+
+  <details class="sec" data-sec="t7"><summary><span class="lt">G</span><span class="tt"><b>S'entraîner comme pour un sport</b><span>La méthode se travaille par répétition.</span></span><span class="st">✓</span></summary><div class="body">
+    <ul>
+      <li>Faire une dissertation, c'est un peu comme le judo ou le karaté : la méthode se « domestique » à force de s'exercer. <span class="src">F. Munier</span></li>
+      <li>Le meilleur moyen de réussir les études critiques, c'est de s'entraîner, notamment avec les activités faites en classe. <span class="src">Prof · étude critique</span></li>
+      <li>Les erreurs fondamentales se font dans les 20 premières minutes, sur le libellé : entraîne-toi souvent à <b>analyser des sujets</b> (notions, espace, période, sens de circulation, petits mots) et à en tirer une problématique et un plan. <span class="src">F. Munier</span><span class="src">La Boîte à Bac</span></li>
+      <li>Entraîne-toi au plan détaillé à partir d'un brainstorm, et à l'introduction rédigée en entier. <span class="src">La Boîte à Bac</span></li>
+      <li>Entraîne-toi en conditions réelles : 4 heures, en respectant la répartition du temps entre les deux exercices. <span class="src">La Boîte à Bac</span></li>
+    </ul>
+    <p class="where">Sur le site : l'onglet « Entraînement bac » de chaque chapitre (sujets, brouillon, plan à cacher, construire un argument).</p>
+  </div></details>
+
+  <details class="sec" data-sec="t8"><summary><span class="lt">H</span><span class="tt"><b>Ce qui ne sert à rien</b><span>Les révisions qui ne rapportent pas de points.</span></span><span class="st">✓</span></summary><div class="body">
+    <ul>
+      <li>Réviser seulement des idées générales ou des concepts sans exemples datés. <span class="src">Élève (17-18)</span></li>
+      <li>Apprendre son cours pour le réciter : la dissertation transforme les connaissances, elle ne les restitue pas. <span class="src">F. Munier</span></li>
+      <li>Vouloir tout mettre dans la copie : less is more. <span class="src">Élève (17-18)</span></li>
+      <li>Accumuler des informations sans savoir les expliquer : chaque nom ou événement cité doit être explicité. <span class="src">Élève (17-18)</span></li>
+    </ul>
+  </div></details>
+  </div>
+
+  <div class="card" style="display:flex;flex-direction:column;gap:12px">
+    <h3>Pour chaque chapitre, ma fiche est prête quand…</h3>
+    <div class="ck" data-ck="chapitre">
+      <label><input type="checkbox"> Je connais chaque jalon et quelques éléments en plus.</label>
+      <label><input type="checkbox"> Je récite mot à mot les définitions des notions essentielles (avec leur auteur s'il y en a un).</label>
+      <label><input type="checkbox"> J'ai repéré les notions transversales du chapitre.</label>
+      <label><input type="checkbox"> Chaque exemple a sa date, un chiffre clé, ses acteurs, et je sais l'expliquer.</label>
+      <label><input type="checkbox"> Je sais pourquoi chaque date clé est importante.</label>
+      <label><input type="checkbox"> J'ai deux ou trois accroches personnelles, pas copiées sur internet.</label>
+      <label><input type="checkbox"> Je connais les grands débats et paradoxes du chapitre.</label>
+      <label><input type="checkbox"> J'ai fait au moins une analyse de sujet et un plan détaillé.</label>
+    </div>
+  </div>
+</section>
+
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+(function () {
+"use strict";
+const $ = (s, r) => (r || document).querySelector(s);
+const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+const KEY = "hggsp-methodo-v1";
+let S = { read: {}, ck: {} };
+try { const r = localStorage.getItem(KEY); if (r) S = Object.assign(S, JSON.parse(r)); } catch (e) { }
+function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { } update(); }
+function toast(t) { const el = $("#toast"); el.textContent = t; el.classList.add("on"); clearTimeout(toast._t); toast._t = setTimeout(() => el.classList.remove("on"), 1600); }
+
+const secs = $$("details.sec");
+secs.forEach(d => {
+  const id = d.dataset.sec;
+  const row = document.createElement("div"); row.className = "markrow";
+  row.innerHTML = `<button class="btn sm" data-read="${id}"></button>`;
+  $(".body", d).appendChild(row);
+});
+$$("[data-toc]").forEach(nav => {
+  const view = nav.closest(".view");
+  nav.innerHTML = $$("details.sec", view).map(d => `<a href="#" data-jump="${d.dataset.sec}">${$(".lt", d).textContent}. ${$(".tt b", d).textContent}</a>`).join("");
+});
+$$(".ck").forEach(box => $$("input", box).forEach((inp, i) => { const k = box.dataset.ck + "-" + i; inp.dataset.k = k; inp.checked = !!S.ck[k]; inp.closest("label").classList.toggle("on", inp.checked); }));
+
+function update() {
+  secs.forEach(d => {
+    const id = d.dataset.sec, r = !!S.read[id];
+    d.classList.toggle("done", r);
+    const b = $("[data-read]", d); b.textContent = r ? "Comprise ✓" : "J'ai compris, marquer comme comprise"; b.classList.toggle("primary", !r);
+    const j = $(`[data-jump="${id}"]`); if (j) j.classList.toggle("read", r);
+  });
+  const n = secs.filter(d => S.read[d.dataset.sec]).length, p = Math.round(n / secs.length * 100);
+  $("#railBar").style.width = p + "%"; $("#railTxt").textContent = n + "/" + secs.length + " étapes comprises";
+}
+
+document.addEventListener("click", e => {
+  const r = e.target.closest("[data-read]");
+  if (r) { const id = r.dataset.read; S.read[id] = !S.read[id]; save(); if (S.read[id]) { toast("Étape marquée comme comprise"); const d = r.closest("details"); d.open = false; const nx = d.nextElementSibling; if (nx && nx.matches("details.sec") && !S.read[nx.dataset.sec]) nx.open = true; } return; }
+  const j = e.target.closest("[data-jump]");
+  if (j) { e.preventDefault(); const d = $(`details[data-sec="${j.dataset.jump}"]`); d.open = true; d.scrollIntoView({ behavior: "smooth", block: "start" }); }
+});
+document.addEventListener("change", e => {
+  const k = e.target.dataset && e.target.dataset.k; if (!k) return;
+  S.ck[k] = e.target.checked; e.target.closest("label").classList.toggle("on", e.target.checked); save();
+});
+
+function route() {
+  let r = (location.hash || "#accueil").slice(1); if (!$(`[data-view="${r}"]`)) r = "accueil";
+  $$(".view").forEach(v => v.hidden = v.dataset.view !== r);
+  $$("#nav a").forEach(a => a.classList.toggle("on", a.dataset.r === r));
+  window.scrollTo(0, 0);
+  const act = $("#nav a.on"); if (act && act.scrollIntoView && window.innerWidth < 860) act.scrollIntoView({ block: "nearest", inline: "center" });
+}
+window.addEventListener("hashchange", route);
+update(); route();
+})();
+</script>
+
+</body></html>
